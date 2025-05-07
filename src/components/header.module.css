@@ -1,0 +1,10 @@
+.header{
+    display: flex;
+    height: 80px;
+    background-color: #0a0b1b;
+}
+
+.headerImage{
+    height: 50px;
+    width: 50px;
+}
