@@ -1,0 +1,41 @@
+/* BargandSans */
+@font-face {
+    font-family: 'BargandSans, sans-serif';
+    src: url('../public/assets/fonts/BagnardSans.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* TextGrey Font */
+@font-face {
+    font-family: 'TextGrey';
+    src: url('../public/assets/fonts/TextGrey-Regular.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'TextGrey';
+    src: url('../public/assets/fonts/TextGrey-Italic.otf') format('opentype');
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'TextGrey';
+    src: url('../public/assets/fonts/TextGrey-Bold.otf') format('opentype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'TextGrey';
+    src: url('../public/assets/fonts/TextGrey-BoldItalic.otf') format('opentype');
+    font-weight: 700;
+    font-style: italic;
+    font-display: swap;
+}
+

@@ -1,0 +1,156 @@
+.homepage {
+    color: #d4d4d4;
+    padding: 10rem 10rem;
+}
+
+.hero {
+    padding: 5rem 0;
+}
+
+.hero > h1{
+    font-size: 4rem;
+    text-align: center;
+    padding-bottom: 3rem;
+    color: #c5a445;
+    letter-spacing: 0.20rem;
+}
+
+.hero > p {
+    font-size: 2rem;
+    text-align: justify;
+    line-height: 2.35rem;
+    letter-spacing: 0.05rem;
+}
+
+.mainDivision {
+    display: flex;
+    width: 100%;
+    gap: 2rem;
+    padding: 5rem 0;
+    align-items: center;
+}
+
+.subDivisionOne {
+    color: #c5a445;
+    font-size: 2.5rem;
+    text-align: center;
+    width: 35%;
+}
+.subDivisionTwo {
+    font-size: 1.8rem;
+    text-align: justify;
+    width: 65%;
+}
+
+.link {
+    color: #c5a445;
+    text-decoration: none;
+    font-size: 1.5rem;
+    display: block;
+}
+
+.dataStructureHeader {
+    display: flex;
+    margin: 5rem auto;
+    justify-content: center;
+    font-size: 3rem;
+    font-weight: bold;
+    color: #c5a445;
+}
+
+.structureTiles {
+    display: flex;
+    padding: 5rem 0;
+}
+
+.tile {
+    transition: 0.35s ease-in-out;
+    background-color: rgba(0,0,0, 25%);
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: 23%;
+    padding: 1rem 1rem;
+    margin: 0 auto;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px 0 #0e0e0e;
+    border: 1px solid #241f04;
+}
+
+.tile:hover {
+    transition: 0.5s ease-in-out;
+    background-color: rgba(0,0,0, 0.50);
+    transform: scale(1.1);
+}
+
+.tileImage {
+    display: flex;
+    border-radius: 5px 5px 0 0;
+}
+
+.tileLink {
+    padding-top: 1.5rem;
+    padding-bottom: 0.5rem;
+    display: flex;
+    justify-content: center;
+    font-size: 1.35rem;
+}
+
+.passwordForm {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.passwordInput {
+    transition: 0.5s ease-in-out;
+    padding: 1.2rem;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    outline: none;
+    background-color: transparent;
+    border-bottom: 1px solid #d5b508;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    color: white;
+    width: 25rem;
+}
+
+.passwordInput:hover {
+    transition: 0.5s ease-in-out;
+    background-color: #1b1b1b;
+}
+
+.passwordInput:focus {
+    transition: 0.5s ease-in-out;
+    background-color: #1b1b1b;
+}
+
+.passwordButton {
+    transition: 0.5s ease-in-out;
+    padding: 8px 12px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    color: #000000;
+    border: 1px solid #000000;
+    cursor: pointer;
+}
+
+.passwordButton:hover {
+    transition: 0.5s ease-in-out;
+    background-color: #c5a445;
+    color: black;
+    border: 1px solid #ffffff;
+}
+
+
+.successMessage {
+    text-align: center;
+    color: #d8b60c;
+    margin-top: 15px;
+    font-weight: bold;
+}

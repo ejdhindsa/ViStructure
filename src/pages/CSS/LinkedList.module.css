@@ -1,0 +1,65 @@
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+    padding: 5rem 10rem;
+    text-align: center;
+    font-family: TextGrey, serif;
+}
+
+.controls {
+    display: flex;
+    gap: 1rem;
+    margin: 2rem 0 10rem;
+    justify-content: center;
+    padding-bottom: 2rem
+}
+
+.inputField {
+    margin-right: 2rem;
+    padding: 1.5rem 3rem;
+    font-size: 1.5rem;
+    cursor: text;
+    border: none;
+    background: none;
+    color: #d4d4d4;
+    border-bottom: 0.05rem solid #c5a445;
+    border-radius: 0.75rem;
+}
+
+.inputField:hover {
+    transition: 0.5s ease-in-out;
+    background-color: #181818;
+}
+
+.inputField:focus {
+    transition: 0.5s ease-in-out;
+    outline: none;
+    background: #181818;
+}
+
+.addNode, .clearButton {
+    padding: 1.5rem 3rem;
+    background: #d4d4d4;
+    color: #000;
+    border: 1px solid #c5a445;
+    border-radius: 1rem;
+    cursor: pointer;
+    font-size: 1.25rem;
+    font-weight: bold;
+    transition: 0.5s ease-in-out;
+}
+
+.addNode:hover{
+    transition: 0.5s ease-in-out;
+    background: #c5a445;
+    color: #000;
+    border: 1px solid #d4d4d4;
+}
+
+.clearButton:hover {
+    transition: 0.5s ease-in;
+    background: #000;
+    color: #c5a445;
+    border: 1px solid #d4d4d4;
+}

@@ -1,0 +1,121 @@
+.singlyLinkedList {
+    display: flex;
+    flex-direction: column;  /* Stack children vertically */
+    align-items: center;     /* Center horizontally */
+    width: 100%;            /* Ensure full width */
+}
+
+.nodesContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 3rem;
+    margin-top: 10rem;
+    position: relative;
+}
+
+.nodeWrapper {
+    display: flex;
+    align-items: center;
+}
+
+.headPointer {
+    display: flex;
+    align-items: center;
+}
+
+.headLabel {
+    color: #c5a445;
+    margin-left: 0.1rem;
+    vertical-align: middle;
+    font-size: 1.75rem;
+}
+
+.headArrow {
+    font-size: 3rem;
+    color: #c5a445;
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: -0.75rem;
+}
+
+.tailPointer {
+    display: flex;
+    align-items: center;
+}
+
+.tailArrow {
+    font-size: 3rem;
+    color: #c5a445;
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: -0.75rem;
+}
+
+.tailLabel {
+    color: #c5a445;
+    margin-left: 0.1rem;
+    vertical-align: middle;
+    font-size: 1.75rem;
+}
+
+.listNode {
+    display: flex;
+    align-items: center;
+    margin: 0.5rem 0;
+}
+
+.valueBox {
+    min-width:4rem;
+    padding: 1rem 2rem;
+    background: #000;
+    color: #fff;
+    border: 2px solid #999;
+    border-radius: 0.75rem 0 0 0.75rem;
+    font-size: 1.25rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pointerBox {
+    min-width: 3rem;
+    width: 3rem;
+    min-height: 3.75rem;
+    height: 3.75rem;
+    background: #000;
+    border: 2px solid #999;
+    border-left: none;
+    border-radius: 0 0.75rem 0.75rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+}
+
+.nullNode {
+    font-size: 2rem;
+    color: #d4d4d4;
+    font-family: BargandSans, sans-serif;
+    margin: 0 2rem;
+}
+
+.arrowNodes {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #d4d4d4;
+}
+
+.arrow {
+    margin-top: -0.75rem;
+    margin-left: -1rem;
+    display: inline-block;
+    font-size: 3rem;
+    color: #d4d4d4;
+    transform: scale(1.5, 1);
+    font-stretch: 300%;
+}
+
