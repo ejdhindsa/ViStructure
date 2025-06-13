@@ -1,7 +1,9 @@
-import { useState } from 'react'
+import { useState } from 'react';
+// importing framer motion to animate
+import { motion, AnimatePresence } from 'framer-motion';
 // import structure styles
-import structureStyles from '../CSS/Structures.module.css'
-import styles from "../CSS/Stack.module.css"
+import structureStyles from '../CSS/Structures.module.css';
+import styles from "../CSS/Stack.module.css";
 
 export default function AddElement()
 {
@@ -68,15 +70,25 @@ export default function AddElement()
 
             <div className={styles.elementContainer}>
 
-                {elements.map((element, index) => {
-                    return (
-                        <div key={element.id} className={styles.elements}>
-                            <div className={styles.element}>
-                                {element.value}
-                            </div>
-                        </div>
-                    ) // end of return
-                })}
+                <AnimatePresence>
+                    {elements.map((element) => {
+                        return (
+                            <motion.div
+                                key={element.id}
+                                className={styles.elements}
+                                initial={{ opacity: 0, y: -30 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: -100 }}
+                                transition={{ duration: 0.2}}
+                            >
+
+                                <div className={styles.element}>
+                                    {element.value}
+                                </div>
+                            </motion.div>
+                        ) // end of return
+                    })}
+                </AnimatePresence>
 
             </div>
 

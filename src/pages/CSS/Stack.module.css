@@ -7,7 +7,7 @@
 }
 
 .elements {
-    transition: 0.5s ease-in-out;
+    transition: all 0.3s ease-in-out;
     display: flex;
     border: 1px solid #a3a3a3;
     padding: 1rem 3rem;
@@ -26,7 +26,6 @@
 
 .elements:hover {
     transition: 0.5s ease-in-out;
-    transform: scale(1.1);
     color: #d8b60c;
 }
 
