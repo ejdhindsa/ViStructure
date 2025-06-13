@@ -10,6 +10,7 @@ import SinglyLinkedList from './pages/SinglyLinkedList/SinglyLinkedList'
 import CircularlyLinkedList from "./pages/CircularlyLinkedList/CircularlyLinkedList";
 import DoublyLinkedList from "./pages/DoublyLinkedList/DoublyLinkedList";
 import CircularDoublyLinkedList from "./pages/CircularDoublyLinkedList/CircularDoublyLinkedList";
+import Stack from "./pages/Stack/Stack"
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             <Route path="/circularlylinkedlist" element={<CircularlyLinkedList />} />
             <Route path="/doublylinkedlist" element={<DoublyLinkedList />} />
             <Route path="/circulardoublylinkedlist" element={<CircularDoublyLinkedList />} />
+            <Route path="/stack" element={<Stack />} />
         </Routes>
 
     </Router>

@@ -2,7 +2,7 @@
 import {useState} from "react";
 // import CSS module from the said directory
 import styles from "../CSS/SinglyLinkedList.module.css"
-import linkedListStyles from "../CSS/LinkedList.module.css"
+import linkedListStyles from "../CSS/Structures.module.css"
 
 export default function AddNode()
 {

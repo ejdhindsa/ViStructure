@@ -5,7 +5,7 @@ import { useRef } from "react";
 // importing effects to create a circular connection between nodes
 import { useEffect } from "react";
 // importing styles to create the nodes
-import linkedListStyles from "../CSS/LinkedList.module.css";
+import linkedListStyles from "../CSS/Structures.module.css";
 import circularStyles from "../CSS/CircularlyLinkedList.module.css";
 import styles from "../CSS/DoublyLinkedList.module.css";
 

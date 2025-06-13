@@ -116,6 +116,19 @@ export default function DataStructuresSection()
                 )}
 
             </div>
+
+            <div className={styles.structureTiles}>
+
+                <div className={styles.tile}>
+                    <Link to="/stack" className={styles.link}>
+                        <img src="/assets/images/DLL.png" className={styles.tileImage} alt="stack"/>
+                        <div className={styles.tileLink}>
+                            Stacks
+                        </div>
+                    </Link>
+                </div>
+
+            </div>
         </>
     ) // end of return
 

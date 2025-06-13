@@ -1,7 +1,7 @@
 // import useState hook for state management
 import { useState} from "react";
 // import CSS modules to stylise
-import linkedListStyles from "../CSS/LinkedList.module.css"
+import linkedListStyles from "../CSS/Structures.module.css"
 import styles from "../CSS/DoublyLinkedList.module.css"
 
 export default function AddNode()
