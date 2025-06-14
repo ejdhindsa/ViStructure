@@ -1,5 +1,5 @@
 import styles from '../CSS/homepage.module.css'
-import LinkedLists from "./LinkedListSection"
+import LinkedLists from "./DataStructureSection"
 
 export default function Homepage() {
     return (

@@ -1,5 +1,7 @@
 // import React's `useState` hook for state management
 import {useState} from "react";
+// import for animating nodes
+import { motion, AnimatePresence } from "framer-motion";
 // import CSS module from the said directory
 import styles from "../CSS/SinglyLinkedList.module.css"
 import linkedListStyles from "../CSS/Structures.module.css"
@@ -71,60 +73,61 @@ return (
 
         <div className={styles.nodesContainer}>
 
-            { /* Head Pointer */ }
-            {nodes.length > 0 && (
-                <div className={styles.headPointer}>
-                    <span className={styles.headLabel}>
-                        Head
-                    </span>
-                    <div className={styles.headArrow}>→</div>
-                </div>
-            )}
 
-            {/* First node (if exists) */}
-            {nodes.length > 0 && (
-                <div className={styles.listNode}>
-                    <div className={styles.valueBox}>{nodes[0].value}</div>
-                    <div className={styles.pointerBox}>
-                        {/* If only one node, show null in pointer box */}
-                        {nodes.length === 1 && <span className={styles.nullNode}>∅</span> }
-                    </div>
-                </div>
-            )}
+            <AnimatePresence initial={false}>
+                {nodes.length > 0 && (
+                    <motion.div
+                        className={styles.headPointer}
+                        initial={{ opacity: 0, x: -10 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: 10 }}
+                        transition={{ duration: 0.2 }}
+                    >
+                        <span className={styles.headLabel}>Head</span>
+                        <div className={styles.headArrow}>→</div>
+                    </motion.div>
+                )}
 
-            {/* Tail pointer for when there is only one node */}
-            {nodes.length === 1 && (
-                <div className={styles.tailPointer}>
-                    <div className={styles.tailArrow}>←</div>
-                    <span className={styles.tailLabel}>Tail</span>
-                </div>
-            )}
+                {nodes.map((node, index) => {
+                    const isFirst = index === 0;
+                    const isLast = index === nodes.length - 1;
 
+                    return (
+                        <motion.div
+                            key={node.id}
+                            className={isFirst ? styles.listNode : styles.arrowNodes}
+                            initial={{ opacity: 0, x: -50, scale: 0.9 }}
+                            animate={{ opacity: 1, x: 0, scale: 1 }}
+                            exit={{ opacity: 0, x: 50, scale: 0.8 }}
+                            transition={{ duration: 0.3 }}
+                        >
+                            {/* Optional Arrow for middle/last nodes */}
+                            {!isFirst && <div className={styles.arrow}>→</div>}
 
-            {/* Remaining nodes with arrows */}
-            {nodes.slice(1).map((node, index) => {
-                // check if this is last element
-                const isLast = index === nodes.slice(1).length - 1;
-                return (
-                    <div key={node.id} className={styles.arrowNodes}>
-                        <div className={styles.arrow}>→</div>
-                        <div className={styles.listNode}>
-                            <div className={styles.valueBox}>{node.value}</div>
-                            <div className={styles.pointerBox}>
-                                {isLast && <span className={styles.nullNode}>∅</span>}
+                            <div className={styles.listNode}>
+                                <div className={styles.valueBox}>{node.value}</div>
+                                <div className={styles.pointerBox}>
+                                    {(isLast) && <span className={styles.nullNode}>∅</span>}
+                                </div>
                             </div>
-                        </div>
 
-                        {/* TAIL POINTER: Only for the last node if more than one node */}
-                        {nodes.length > 1 && isLast && (
-                            <div className={styles.tailPointer}>
-                                <div className={styles.tailArrow}>←</div>
-                                <span className={styles.tailLabel}>Tail</span>
-                            </div>
-                        )}
-                    </div>
-                )
-            })}
+                            {/* TAIL POINTER: Only for the last node */}
+                            {isLast && (
+                                <motion.div
+                                    className={styles.tailPointer}
+                                    initial={{ opacity: 0, x: -10 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    exit={{ opacity: 0, x: 10 }}
+                                    transition={{ duration: 0.2 }}
+                                >
+                                    <div className={styles.tailArrow}>←</div>
+                                    <span className={styles.tailLabel}>Tail</span>
+                                </motion.div>
+                            )}
+                        </motion.div>
+                    );
+                })}
+            </AnimatePresence>
 
         </div>
 

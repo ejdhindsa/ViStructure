@@ -82,8 +82,8 @@
 .pointerBox {
     min-width: 3rem;
     width: 3rem;
-    min-height: 3.75rem;
-    height: 3.75rem;
+    min-height: 3.725rem;
+    height: 3.725rem;
     background: #000;
     border: 2px solid #999;
     border-left: none;

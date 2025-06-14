@@ -1,5 +1,7 @@
 // import useState hook for state management
 import { useState} from "react";
+// importing for animating nodes
+import { motion, AnimatePresence } from "framer-motion";
 // import CSS modules to stylise
 import linkedListStyles from "../CSS/Structures.module.css"
 import styles from "../CSS/DoublyLinkedList.module.css"
@@ -82,19 +84,25 @@ export default function AddNode()
                     </div>
                 </div>
 
+                <AnimatePresence>
+                    {nodes.map((node) => {
 
-                {nodes.map((node) => {
-
-                    return (
-                        <div className={styles.listNode}>
-                            <div className={styles.beforeArrow}>←</div>
-                            <div className={styles.beforeNode}></div>
-                            <div className={styles.valueBox}>{node.value}</div>
-                            <div className={styles.afterNode}></div>
-                            <div className={styles.afterArrow}>→</div>
-                        </div>
-                    )
-                })}
+                        return (
+                            <motion.div
+                                className={styles.listNode}
+                                initial={{ opacity: 0, scale: 0.5, x: -50 }}
+                                animate={{ opacity: 1, scale: 1, x: 0 }}
+                                transition={{ duration: 0.3 }}
+                            >
+                                <div className={styles.beforeArrow}>←</div>
+                                <div className={styles.beforeNode}></div>
+                                <div className={styles.valueBox}>{node.value}</div>
+                                <div className={styles.afterNode}></div>
+                                <div className={styles.afterArrow}>→</div>
+                            </motion.div>
+                        )
+                    })}
+                </AnimatePresence>
 
                 <div className={styles.sentinel}>
                     <div className={styles.listNode}>

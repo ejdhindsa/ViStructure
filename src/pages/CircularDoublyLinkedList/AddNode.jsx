@@ -4,6 +4,8 @@ import {useState} from "react";
 import { useRef } from "react";
 // importing effects to create a circular connection between nodes
 import { useEffect } from "react";
+// importing for animating nodes
+import { motion, AnimatePresence } from "framer-motion";
 // importing styles to create the nodes
 import linkedListStyles from "../CSS/Structures.module.css";
 import circularStyles from "../CSS/CircularlyLinkedList.module.css";
@@ -21,6 +23,8 @@ export default function NodeAdder()
     const [arrowPath, setArrowPath] = useState("");
     // stored bool if list is rotated or not
     const [isRotated, setIsRotated] = useState(false);
+    // stores the true or false if the arrow head will be visible
+    const [showArrowHead, setShowArrowHead] = useState(false);
 
     // initialisation of references
     const headRef = useRef(null);       // reference to the first node element
@@ -39,6 +43,11 @@ export default function NodeAdder()
 
         // resets the input value
         setInputValue("");
+
+        // delay arrowhead visibility
+        setShowArrowHead(false);
+        setTimeout(() => setShowArrowHead(true), 950);
+
     } // end of addAtHeader()
 
     // adds to the end of the linked list, before the trailer
@@ -51,6 +60,11 @@ export default function NodeAdder()
             {id: Date.now(), value: inputValue}])
         // resets all the input values
         setInputValue("");
+
+        // delay arrowhead visibility
+        setShowArrowHead(false);
+        setTimeout(() => setShowArrowHead(true), 950);
+
     } // end of addAtTrailer()
 
     // rotate the nodes
@@ -164,10 +178,10 @@ export default function NodeAdder()
               ${endX} ${endY}
             `
             : `
-            M ${startX - 3 } ${startY - 8}
+            M ${startX + 2 } ${startY - 2}
             C ${startX + multiCurveOffsetX} ${startY + multiCurveOffsetY},
               ${endX - multiCurveOffsetX} ${endY + multiCurveOffsetY},
-              ${endX + 15} ${endY - 5}
+              ${endX + 15} ${endY}
         `;
 
         // stores this constructed SVG path string in the state
@@ -228,15 +242,25 @@ export default function NodeAdder()
                                 if (isLast) tailRef.current = el;
                             }}
                         >
-                            {!isFirst && (
-                                <div className={styles.beforeArrow}>←</div>
-                            )}
-                            <div className={styles.beforeNode}></div>
-                            <div className={styles.valueBox}>{node.value}</div>
-                            <div className={styles.afterNode}></div>
-                            {!isLast && (
-                                <div className={styles.afterArrow}>→</div>
-                            )}
+                            <AnimatePresence>
+                                <motion.div
+                                    className={styles.animationContainer}
+                                    initial={{ opacity: 0, scale: 0.5, x: -50 }}
+                                    animate={{ opacity: 1, scale: 1, x: 0 }}
+                                    transition={{ duration: 0.3 }}
+                                >
+                                    {!isFirst && (
+                                        <div className={styles.beforeArrow}>←</div>
+                                    )}
+                                    <div className={styles.beforeNode}></div>
+                                    <div className={styles.valueBox}>{node.value}</div>
+                                    <div className={styles.afterNode}></div>
+                                    {!isLast && (
+                                        <div className={styles.afterArrow}>→</div>
+                                    )}
+                                </motion.div>
+                            </AnimatePresence>
+
                         </div>
                     )
                 })}
@@ -245,14 +269,26 @@ export default function NodeAdder()
                     <svg className={circularStyles.circularArrowSvg}>
 
                         <defs>
-                            <marker id="arrowhead" markerWidth="6" markerHeight="6" refX="6" refY="2" orient="auto">
-                                <polygon points="0 0, 6 2, 0 6" fill="#d4d4d4" />
-                            </marker>
+                            { showArrowHead && (
+                                <marker id="arrowhead" markerWidth="6" markerHeight="6" refX="6" refY="2" orient="auto">
+                                    <polygon points="0 0, 6 2, 0 6" fill="#d4d4d4" />
+                                </marker>
+                            )}
                         </defs>
-                        <path
+                        <motion.path
+                            key={arrowPath} // forces re-animation when path changes
                             d={arrowPath}
                             className={circularStyles.circularArrowPath}
                             markerEnd="url(#arrowhead)"
+                            fill="transparent"
+                            stroke="#d4d4d4"
+                            strokeWidth="2"
+                            initial={{ pathLength: 0, opacity: 0 }}
+                            animate={{ pathLength: 1, opacity: 1 }}
+                            transition={{
+                                duration: 0.8,
+                                ease: "easeOut"
+                            }}
                         />
                     </svg>
                 )}

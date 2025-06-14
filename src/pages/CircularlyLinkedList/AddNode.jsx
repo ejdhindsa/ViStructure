@@ -4,10 +4,11 @@ import {useState} from "react";
 import { useRef } from "react";
 // importing effects to create a circular connection between nodes
 import { useEffect } from "react";
+// importing for animating nodes
+import { motion, AnimatePresence } from "framer-motion";
 // importing styles to create the nodes
 import linkedListStyles from "../CSS/Structures.module.css";
 import styles from "../CSS/CircularlyLinkedList.module.css";
-
 export default function NodeAdder()         // defines the main component function
 {
     // starting state initialisation
@@ -18,6 +19,8 @@ export default function NodeAdder()         // defines the main component functi
     const [inputValue, setInputValue] = useState("");
     // stores the SVG path data for the circular arrow
     const [arrowPath, setArrowPath] = useState("");
+    // stores the true or false if the arrow head will be visible
+    const [showArrowHead, setShowArrowHead] = useState(false);
 
     // initialisation of references
     const headRef = useRef(null);       // reference to the first node element
@@ -41,6 +44,10 @@ export default function NodeAdder()         // defines the main component functi
         // resets the input button value
         setInputValue("");
 
+        // delay arrowhead visibility
+        setShowArrowHead(false);
+        setTimeout(() => setShowArrowHead(true), 900);
+
     } // end of addAfterTail()
 
     // adds to the end of the list (at the tail)
@@ -56,6 +63,10 @@ export default function NodeAdder()         // defines the main component functi
 
         // resets the input button value
         setInputValue("");
+
+        // delay arrowhead visibility
+        setShowArrowHead(false);
+        setTimeout(() => setShowArrowHead(true), 900);
 
     } // end of addAtTail()
 
@@ -225,11 +236,18 @@ export default function NodeAdder()         // defines the main component functi
                                 if (isLast) tailRef.current = el;
                             }}
                         >
-                            <div className={styles.listNode}>
-                                <div className={styles.valueBox}>{node.value}</div>
-                                <div className={styles.pointerBox}></div>
-                                {!isLast && <div className={styles.arrow}>→</div>}
-                            </div>
+                            <AnimatePresence>
+                                <motion.div
+                                    className={styles.listNode}
+                                    initial={{ opacity: 0, scale: 0.5, x: -50 }}
+                                    animate={{ opacity: 1, scale: 1, x: 0 }}
+                                    transition={{ duration: 0.3 }}
+                                >
+                                    <div className={styles.valueBox}>{node.value}</div>
+                                    <div className={styles.pointerBox}></div>
+                                    {!isLast && <div className={styles.arrow}>→</div>}
+                                </motion.div>
+                            </AnimatePresence>
                         </div>
                     );
                 })}
@@ -237,14 +255,26 @@ export default function NodeAdder()         // defines the main component functi
                 {arrowPath && (
                     <svg className={styles.circularArrowSvg}>
                         <defs>
-                            <marker id="arrowhead" markerWidth="6" markerHeight="6" refX="6" refY="2" orient="auto">
-                                <polygon points="0 0, 6 2, 0 6" fill="#d4d4d4" />
-                            </marker>
+                            { showArrowHead && (
+                                <marker id="arrowhead" markerWidth="6" markerHeight="6" refX="6" refY="2" orient="auto">
+                                    <polygon points="0 0, 6 2, 0 6" fill="#d4d4d4" />
+                                </marker>
+                            )}
                         </defs>
-                        <path
+                        <motion.path
+                            key={arrowPath} // forces re-animation when path changes
                             d={arrowPath}
                             className={styles.circularArrowPath}
                             markerEnd="url(#arrowhead)"
+                            fill="transparent"
+                            stroke="#d4d4d4"
+                            strokeWidth="2"
+                            initial={{ pathLength: 0, opacity: 0 }}
+                            animate={{ pathLength: 1, opacity: 1 }}
+                            transition={{
+                                duration: 1.0,
+                                ease: "easeInOut"
+                            }}
                         />
                     </svg>
                 )}
