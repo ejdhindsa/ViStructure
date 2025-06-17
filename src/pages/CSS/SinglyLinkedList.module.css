@@ -119,3 +119,7 @@
     font-stretch: 300%;
 }
 
+.activeNode {
+    background: #2b2b2b;
+    color: #ffffff;
+}

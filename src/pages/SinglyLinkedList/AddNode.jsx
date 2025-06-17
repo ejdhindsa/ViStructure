@@ -1,8 +1,6 @@
-// import React's `useState` hook for state management
-import {useState} from "react";
-// import for animating nodes
+// import statements
+import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-// import CSS module from the said directory
 import styles from "../CSS/SinglyLinkedList.module.css"
 import linkedListStyles from "../CSS/Structures.module.css"
 
@@ -13,6 +11,20 @@ export default function AddNode()
     // initialises empty array [] in the useState()
     const [nodes, setNodes] = useState([]);
     const [inputValue, setInputValue] = useState("");       // for input field
+    // states for traversal
+    const [currentIndex, setCurrentIndex] = useState(null);
+    const [traversedNodes, setTraversedNodes] = useState([]);
+    const [isTraversing, setIsTraversing] = useState(false);
+    // new state for the snapshot of the list
+    const [traverseSnapshot, setTraverseSnapshot] = useState([]);
+    // state for pausing or continuing the traversal
+    const [isPaused, setIsPaused] = useState(false);
+    // Update all references of index inside useEffect and traverseNext
+    const [traversalIndex, setTraversalIndex] = useState(0);
+
+
+    // ref for controlling interval
+    const intervalRef = useRef(null);
 
     // adds to the beginning of the linked list
     const addFirstNode = () => {
@@ -42,9 +54,90 @@ export default function AddNode()
         setInputValue('');
     } // end of addLastNode()
 
+    // function that starts traversing the list
+    const traverseList = () => {
+        if (nodes.length === 0)
+            return;
+
+        setTraverseSnapshot([...nodes]); // snapshot of nodes at the time
+        setTraversedNodes([]);
+        setTraversalIndex(0);
+        setIsTraversing(true);
+        setIsPaused(false);
+
+    }; // end of traverseList
+
+    // function that allows manually stepping forward
+    const traverseNext = () => {
+        if (traversalIndex < traverseSnapshot.length) {
+            setTraversedNodes(t => [...t, traverseSnapshot[traversalIndex].value]);
+            setCurrentIndex(traversalIndex);
+            setTraversalIndex(prev => prev + 1);
+        } // end of if
+        else {
+            setIsTraversing(false);
+            setCurrentIndex(null);
+        } // end of else
+
+    }; // end of traverse next
+
+    // function that allows manually stepping backwards
+    const traversePrevious = () => {
+
+        setTraversalIndex(prev => {
+            const newIndex = Math.max(prev - 1, 0);
+            setTraversedNodes(t => t.slice(0, newIndex));
+            setCurrentIndex(newIndex);
+            return newIndex;
+        });
+
+    }; // end of traversePrevious
+
+    // toggles pause or play of the traversal
+    const togglePause = () => {
+        setIsPaused((prev) => !prev);
+    } // end of toggle pause
+
+    // instead of traversing directly in the traverseList method, list traverses here
+    // this safeguards traverse list to from accessing nodes before they have been declared
+    useEffect(() => {
+        if (!isTraversing || traverseSnapshot.length === 0)
+            return;
+
+        const interval = setInterval(() => {
+
+            // exits if the traversal is paused
+            if (isPaused)
+                return;
+
+            // Guard clause — do nothing if out of bounds
+            if (traversalIndex >= traverseSnapshot.length || !traverseSnapshot[traversalIndex]) {
+                clearInterval(interval);
+                setCurrentIndex(null);
+                setIsTraversing(false);
+                return;
+            } // end of if
+
+            // Safe access
+            const currentNode = traverseSnapshot[traversalIndex];
+            setTraversedNodes((prev) => [...prev, currentNode.value]);
+            setCurrentIndex(traversalIndex);
+            setTraversalIndex(prev => prev + 1); // Move to next node
+
+        }, 1000);
+
+        return () => clearInterval(interval);
+    }, [isTraversing, traverseSnapshot, isPaused, traversalIndex]);
+
     // clears the nodes and empties the current array of nodes
     const clearNodes = () => {
-        setNodes([]);
+        setNodes([]);                   // clears the linked list nodes
+        setTraversedNodes([]);          // clears the traversal log
+        setTraversalIndex(0);           // resets active index
+        setIsTraversing(false);         // stop traversal if in progress
+        setTraverseSnapshot([]);        // clear the snapshot as well
+        setIsPaused(false);             // sets pause to false (play)
+        clearInterval(intervalRef.current)    // clear interval
     } // end of clearNodes()
 
 return (
@@ -64,6 +157,11 @@ return (
             <button onClick={addLastNode} className={linkedListStyles.addNode} type="button">
                 Add Last
             </button>
+            {nodes.length > 0 && !isTraversing && (
+                <button onClick={traverseList} className={linkedListStyles.addNode} type="button">
+                    Traverse
+                </button>
+            )}
             {nodes.length > 0 && (
                 <button onClick={clearNodes} className={linkedListStyles.clearButton} type="button">
                     Clear Nodes
@@ -95,7 +193,7 @@ return (
                     return (
                         <motion.div
                             key={node.id}
-                            className={isFirst ? styles.listNode : styles.arrowNodes}
+                            className={`${isFirst ? styles.listNode : styles.arrowNodes}`}
                             initial={{ opacity: 0, x: -50, scale: 0.9 }}
                             animate={{ opacity: 1, x: 0, scale: 1 }}
                             exit={{ opacity: 0, x: 50, scale: 0.8 }}
@@ -105,8 +203,13 @@ return (
                             {!isFirst && <div className={styles.arrow}>→</div>}
 
                             <div className={styles.listNode}>
-                                <div className={styles.valueBox}>{node.value}</div>
-                                <div className={styles.pointerBox}>
+                                <div className={`${styles.valueBox}
+                                                 ${index === currentIndex ? styles.activeNode : ""}`}
+                                >
+                                    {node.value}
+                                </div>
+                                <div className={`${styles.pointerBox}
+                                                 ${index === currentIndex ? styles.activeNode : ""}`}>
                                     {(isLast) && <span className={styles.nullNode}>∅</span>}
                                 </div>
                             </div>
@@ -130,6 +233,32 @@ return (
             </AnimatePresence>
 
         </div>
+
+        {/* Traversal Control Section */}
+        {isTraversing && (
+            <div className={linkedListStyles.traversalControls}>
+                <button onClick={togglePause} type="button" className={linkedListStyles.addNode}>
+                    {isPaused ? "Resume" : "Pause"}
+                </button>
+                <button onClick={traversePrevious} className={linkedListStyles.addNode}>
+                    Previous
+                </button>
+                <button onClick={traverseNext} className={linkedListStyles.addNode}>
+                    Next
+                </button>
+            </div>
+        )}
+
+        { traversedNodes.length > 0 && (
+            <div className={linkedListStyles.traversalLog}>
+                <h3>Traversal Order:</h3>
+                <div className={linkedListStyles.logNodes}>
+                    {traversedNodes.map((node, index) => (
+                        <span key={index} className={linkedListStyles.logNode}>{node}</span>
+                    ))}
+                </div>
+            </div>
+        )}
 
     </div>
 

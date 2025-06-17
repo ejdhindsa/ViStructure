@@ -63,3 +63,46 @@
     color: #c5a445;
     border: 1px solid #d4d4d4;
 }
+
+.traversalControls {
+    display: flex;
+    gap: 1rem;
+    margin: 10rem 0 2rem;
+    justify-content: center;
+}
+
+.traversalControls > h4 {
+    color: #d4d4d4;
+    font-size: 1.25rem;
+}
+
+.traversalLog {
+    margin-top: 3.5rem;
+    background: #000000;
+    padding: 3rem 2rem;
+    border-radius: 8px;
+    border: 1px solid #262626;
+}
+
+.traversalLog > h3 {
+    font-size: 1.5rem;
+    color: #d5b508;
+}
+
+.logNodes {
+    padding: 2.5rem 2rem 0.5rem 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.logNode {
+    background-color: #262626;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 6px;
+    border: 1px solid #4a4a4a;
+    font-size: 1.25rem;
+}
+
+
