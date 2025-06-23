@@ -69,6 +69,21 @@ export default function DataStructuresSection()
                 </form>
             )}
 
+            {isUnlocked && (
+                <form className={styles.passwordForm}>
+                    <button
+                        onClick={() => {
+                            localStorage.removeItem("cdllUnlocked");
+                            setIsUnlocked(false);
+                            setSuccessMessage("");
+                        }}
+                        className={styles.passwordButton}
+                    >
+                        Lock CDLL
+                    </button>
+                </form>
+            )}
+
             {/* Success Message */}
             {successMessage && (
                 <div className={styles.successMessage}>{successMessage}</div>

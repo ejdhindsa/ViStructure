@@ -120,6 +120,7 @@
 }
 
 .activeNode {
-    background: #2b2b2b;
+    transition: 0.25s ease-in-out;
+    background: #d5b508;
     color: #ffffff;
 }

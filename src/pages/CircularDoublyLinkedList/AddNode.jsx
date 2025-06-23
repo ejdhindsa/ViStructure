@@ -21,6 +21,7 @@ export default function NodeAdder()
     const [inputValue, setInputValue] = useState("");
     // stores the SVG path data for the circular arrow
     const [arrowPath, setArrowPath] = useState("");
+    const [reverseArrowPath, setReverseArrowPath] = useState("");
     // stored bool if list is rotated or not
     const [isRotated, setIsRotated] = useState(false);
     // stores the true or false if the arrow head will be visible
@@ -153,10 +154,10 @@ export default function NodeAdder()
         // feel free to play and find a suitable curve offset
 
         const loopOffsetX = 100; // wider horizontal stretch for self-loop
-        const loopOffsetY = 125; // taller vertical stretch for self-loop
+        const loopOffsetY = 180; // taller vertical stretch for self-loop
 
-        const multiCurveOffsetX = 120; // wider horizontal stretch for multi-node curve
-        const multiCurveOffsetY = 150; // taller vertical stretch for multi-node curve
+        const multiCurveOffsetX = -20; // wider horizontal stretch for multi-node curve
+        const multiCurveOffsetY = 100; // taller vertical stretch for multi-node curve
 
         /* -------------------- SVG PATH CONSTRUCTION -------------------------
         The first parts creates an SVG path if there is only one node, a ternary operator checks if there is
@@ -174,19 +175,37 @@ export default function NodeAdder()
             ? `                     
             M ${startX} ${startY}
             C ${startX + loopOffsetX} ${startY + loopOffsetY},
-              ${startX - nodeWidth - loopOffsetX - 100} ${startY + loopOffsetY},
+              ${startX - nodeWidth - loopOffsetX} ${startY + loopOffsetY},
               ${endX} ${endY}
             `
             : `
-            M ${startX + 2 } ${startY - 2}
+            M ${startX} ${startY + 5}
             C ${startX + multiCurveOffsetX} ${startY + multiCurveOffsetY},
               ${endX - multiCurveOffsetX} ${endY + multiCurveOffsetY},
-              ${endX + 15} ${endY}
+              ${endX + 10} ${endY + 5}
         `;
 
         // stores this constructed SVG path string in the state
         // also trigger re-render to display the updated arrow
         setArrowPath(newPath);
+
+        // same code but for the reverse path
+        const reversePath = isSelfLoop
+            ? `
+        M ${endX} ${endY}
+        C ${endX + loopOffsetX} ${endY + loopOffsetY},
+          ${endX - nodeWidth - loopOffsetX} ${endY - loopOffsetY},
+          ${startX} ${startY}
+        `
+        : `
+        M ${endX + 10} ${endY}
+        C ${endX - multiCurveOffsetX} ${endY - multiCurveOffsetY},
+          ${startX} ${startY - multiCurveOffsetY},
+          ${startX} ${startY}
+      `;
+
+        setReverseArrowPath(reversePath);
+
     }, [nodes]); // end of useEffect()
 
     return (
@@ -280,6 +299,40 @@ export default function NodeAdder()
                             d={arrowPath}
                             className={circularStyles.circularArrowPath}
                             markerEnd="url(#arrowhead)"
+                            fill="transparent"
+                            stroke="#d4d4d4"
+                            strokeWidth="2"
+                            initial={{ pathLength: 0, opacity: 0 }}
+                            animate={{ pathLength: 1, opacity: 1 }}
+                            transition={{
+                                duration: 0.8,
+                                ease: "easeOut"
+                            }}
+                        />
+                    </svg>
+                )}
+
+                {reverseArrowPath && (
+                    <svg className={circularStyles.circularArrowSvg}>
+                        <defs>
+                            {showArrowHead && (
+                                <marker
+                                    id="reverseArrowhead"
+                                    markerWidth="6"
+                                    markerHeight="6"
+                                    refX="0"
+                                    refY="2"
+                                    orient="auto"
+                                >
+                                    <polygon points="6 0, 0 2, 6 6" fill="#d4d4d4" />
+                                </marker>
+                            )}
+                        </defs>
+                        <motion.path
+                            key={reverseArrowPath}
+                            d={reverseArrowPath}
+                            className={circularStyles.circularArrowPath}
+                            markerEnd="url(#reverseArrowhead)"
                             fill="transparent"
                             stroke="#d4d4d4"
                             strokeWidth="2"
