@@ -50,6 +50,7 @@
 
 .dropdownLabel {
     user-select: none;
+    padding-left: 1rem;
 }
 
 .dropdownContent {
@@ -57,10 +58,20 @@
     color: #fff;
     border-radius: 0.5rem;
     margin-top: 0.5rem;
-    padding: 1rem 1.5rem;
+    padding: 3rem 5rem;
     font-size: 1.65rem;
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     animation: fadeIn 0.3s;
+    line-height: 2rem;
+}
+
+.methodsList {
+    line-height: 2.5rem;
+    font-size: 1.5rem;
+}
+
+.methodName {
+    font-family: "Lucida Console", Courier, monospace;
 }
 
 @keyframes fadeIn {

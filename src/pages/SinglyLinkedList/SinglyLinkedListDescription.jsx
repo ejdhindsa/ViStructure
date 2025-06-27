@@ -21,15 +21,25 @@ export default function SinglyLinkedListDescription() {
             >
               ▶
             </span>
-                <span className={styles.dropdownLabel}>Description</span>
+                <span className={styles.dropdownLabel}>Structure Description</span>
             </button>
             {expanded && (
                 <div className={styles.dropdownContent} id="ll-desc">
                     <p>
-                        According to Geeks for Geeks, A singly linked list is a fundamental data structure, it
-                        consists of nodes where each node contains a data field and a reference to the next node
-                        in the linked list. The next of the last node is null, indicating the end of the list.
-                        Linked Lists support efficient insertion and deletion operations.
+                        A singly linked list is a concrete data structure consisting of sequence of nodes, starting
+                        from the head pointer. Each node in the list stores an element, the link to the next node,
+                        and the last node (tail) refers to null.
+                        <br /> <br/>
+                        <span className={styles.methodsList}>
+                            A Singly Linked List consists of following methods: <br/>
+                            i. <span className={styles.methodName}>size():</span> Returns the size of the list. <br/>
+                            ii. <span className={styles.methodName}>isEmpty():</span> Returns true if the list is empty, false otherwise. <br/>
+                            iii. <span className={styles.methodName}>first():</span> Returns (but does not remove) thee first element in the list. <br/>
+                            iv. <span className={styles.methodName}>last():</span> Returns (but does not remove) the last element in the list. <br/>
+                            v. <span className={styles.methodName}>addFirst(element):</span> Adds a new element to the front of the list. <br/>
+                            vi. <span className={styles.methodName}>addLast(element):</span> Adds a new element to the last of the list. <br/>
+                            vii. <span className={styles.methodName}>removeFirst():</span> Removes and returns the first element of the list. <br/>
+                        </span>
                     </p>
                 </div>
             )}

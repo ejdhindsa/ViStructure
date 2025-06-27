@@ -122,5 +122,5 @@
 .activeNode {
     transition: 0.25s ease-in-out;
     background: #d5b508;
-    color: #ffffff;
+    color: #000000;
 }

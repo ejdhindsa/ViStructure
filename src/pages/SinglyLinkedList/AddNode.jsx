@@ -157,11 +157,7 @@ return (
             <button onClick={addLastNode} className={linkedListStyles.addNode} type="button">
                 Add Last
             </button>
-            {nodes.length > 0 && !isTraversing && (
-                <button onClick={traverseList} className={linkedListStyles.addNode} type="button">
-                    Traverse
-                </button>
-            )}
+
             {nodes.length > 0 && (
                 <button onClick={clearNodes} className={linkedListStyles.clearButton} type="button">
                     Clear Nodes
@@ -169,9 +165,17 @@ return (
             )}
         </div>
 
+        <div className={linkedListStyles.extraMethods}>
+            <h3>Structure Information:</h3>
+            <div className={linkedListStyles.methods}>
+                <p className={linkedListStyles.method}>isEmpty(): {nodes.length > 0 ? "false" : "true"}</p>
+                <p className={linkedListStyles.method}>size(): {nodes.length}</p>
+                <p className={linkedListStyles.method}>first(): {nodes.length > 0 ? nodes[0].value : "null"}</p>
+                <p className={linkedListStyles.method}>last(): {nodes.length > 0 ? nodes[nodes.length - 1].value : "null"}</p>
+            </div>
+        </div>
+
         <div className={styles.nodesContainer}>
-
-
             <AnimatePresence initial={false}>
                 {nodes.length > 0 && (
                     <motion.div
@@ -196,7 +200,7 @@ return (
                             className={`${isFirst ? styles.listNode : styles.arrowNodes}`}
                             initial={{ opacity: 0, x: -50, scale: 0.9 }}
                             animate={{ opacity: 1, x: 0, scale: 1 }}
-                            exit={{ opacity: 0, x: 50, scale: 0.8 }}
+                            exit={{ opacity: 0, x: 0, scale: 0.8 }}
                             transition={{ duration: 0.3 }}
                         >
                             {/* Optional Arrow for middle/last nodes */}
@@ -235,30 +239,49 @@ return (
         </div>
 
         {/* Traversal Control Section */}
-        {isTraversing && (
-            <div className={linkedListStyles.traversalControls}>
+        <div className={linkedListStyles.traversalControls}>
+            {nodes.length > 0 && !isTraversing && (
+                <button onClick={traverseList} className={linkedListStyles.addNode} type="button">
+                    Traverse
+                </button>
+            )}
+            {isTraversing && (
                 <button onClick={togglePause} type="button" className={linkedListStyles.addNode}>
                     {isPaused ? "Resume" : "Pause"}
                 </button>
-                <button onClick={traversePrevious} className={linkedListStyles.addNode}>
-                    Previous
-                </button>
-                <button onClick={traverseNext} className={linkedListStyles.addNode}>
-                    Next
-                </button>
-            </div>
-        )}
+            )}
+            {nodes.length > 0 && (
+                <>
+                    <button onClick={traversePrevious} className={linkedListStyles.addNode}>
+                        Previous
+                    </button>
+                    <button onClick={traverseNext} className={linkedListStyles.addNode}>
+                        Next
+                    </button>
+                </>
+            )}
 
-        { traversedNodes.length > 0 && (
-            <div className={linkedListStyles.traversalLog}>
-                <h3>Traversal Order:</h3>
-                <div className={linkedListStyles.logNodes}>
-                    {traversedNodes.map((node, index) => (
-                        <span key={index} className={linkedListStyles.logNode}>{node}</span>
-                    ))}
+        </div>
+
+        <AnimatePresence initial={false}>
+            {nodes.length > 0 && (
+                <div className={linkedListStyles.traversalLog}>
+                    <h3>Traversal Order:</h3>
+                    <div className={linkedListStyles.logNodes}>
+                        {traversedNodes.map((node, index) => (
+                            <motion.span
+                                key={index}
+                                className={linkedListStyles.logNode}
+                                initial={{ opacity: 0, x: 0 }}
+                                animate={{ opacity: 1, x: 0 }}
+                            >
+                                {node}
+                            </motion.span>
+                        ))}
+                    </div>
                 </div>
-            </div>
-        )}
+            )}
+        </AnimatePresence>
 
     </div>
 
