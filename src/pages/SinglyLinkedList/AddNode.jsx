@@ -54,6 +54,13 @@ export default function AddNode()
         setInputValue('');
     } // end of addLastNode()
 
+    const removeFirst = () => {
+        if (nodes.length === 0)
+            return;
+
+        setNodes(prevNodes => prevNodes.slice(1));
+    } // end of removeFirst()
+
     // function that starts traversing the list
     const traverseList = () => {
         if (nodes.length === 0)
@@ -157,7 +164,11 @@ return (
             <button onClick={addLastNode} className={linkedListStyles.addNode} type="button">
                 Add Last
             </button>
-
+            {nodes.length > 0 && (
+                <button onClick={removeFirst} className={linkedListStyles.addNode} type="button">
+                    Remove First
+                </button>
+            )}
             {nodes.length > 0 && (
                 <button onClick={clearNodes} className={linkedListStyles.clearButton} type="button">
                     Clear Nodes
