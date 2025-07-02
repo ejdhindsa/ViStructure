@@ -202,7 +202,7 @@ export default function NodeAdder()
         C ${endX - multiCurveOffsetX} ${endY - multiCurveOffsetY},
           ${startX} ${startY - multiCurveOffsetY},
           ${startX} ${startY}
-      `;
+        `;
 
         setReverseArrowPath(reversePath);
 
@@ -240,6 +240,24 @@ export default function NodeAdder()
                         Clear
                     </button>
                 )}
+            </div>
+
+            <div className={linkedListStyles.extraMethods}>
+                <h3>Structure Information:</h3>
+                <div className={linkedListStyles.methods}>
+                    <p className={linkedListStyles.method}>
+                        isEmpty(): {nodes.length > 0 ? "false" : "true"}
+                    </p>
+                    <p className={linkedListStyles.method}>
+                        size(): {nodes.length}
+                    </p>
+                    <p className={linkedListStyles.method}>
+                        first(): {nodes.length > 0 ? nodes[0].value : "null"}
+                    </p>
+                    <p className={linkedListStyles.method}>
+                        last(): {nodes.length > 0 ? nodes[nodes.length - 1].value : "null"}
+                    </p>
+                </div>
             </div>
 
             <div

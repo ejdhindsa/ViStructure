@@ -21,15 +21,35 @@ export default function DoublyLinkedListDescription() {
             >
               ▶
             </span>
-                <span className={styles.dropdownLabel}>Description</span>
+                <span className={styles.dropdownLabel}>Structure Description</span>
             </button>
             {expanded && (
                 <div className={styles.dropdownContent} id="sll-desc">
                     <p>
-                        A circular doubly linked list is a data structure where each node has two pointers: one to the
-                        next node and one to the previous node, and the last node points back to the first node,
-                        creating a circular loop. This allows for efficient traversal in both directions and simplifies
-                        insertion and deletion operations.
+                        A Circular Doubly Linked List connects the first and the last node to each other. The data
+                        structure can also be traversed forward and backwards.
+                        <br /> <br/>
+                        <span className={styles.methodsList}>
+                            A Doubly Linked List consists of following methods: <br/>
+                            i. <span className={styles.methodName}>size():</span>
+                                Returns the size of the list. <br/>
+                            ii. <span className={styles.methodName}>isEmpty():</span>
+                                Returns true if the list is empty, false otherwise. <br/>
+                            iii. <span className={styles.methodName}>first():</span>
+                                Returns (but does not remove) thee first element in the list. <br/>
+                            iv. <span className={styles.methodName}>last():</span>
+                                Returns (but does not remove) the last element in the list. <br/>
+                            v. <span className={styles.methodName}>addFirst(element):</span>
+                                Adds a new element to the front of the list. <br/>
+                            vi. <span className={styles.methodName}>addLast(element):</span>
+                                Adds a new element to the last of the list. <br/>
+                            vii. <span className={styles.methodName}>reverse():</span>
+                                Moves the last element in the list to the end. <br/>
+                            viii. <span className={styles.methodName}>rotate():</span>
+                                Rotates the direction of rotation. <br/>
+                            ix. <span className={styles.methodName}>removeFirst():</span>
+                                Removes and returns the first element of the list. <br/>
+                        </span>
                     </p>
                 </div>
             )}
