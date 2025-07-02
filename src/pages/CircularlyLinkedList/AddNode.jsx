@@ -76,7 +76,7 @@ export default function NodeAdder()         // defines the main component functi
         if (nodes.length <= 1)
             return;
 
-        // create a copy of the nodes and acquire thee value on the last node
+        // create a copy of the nodes and acquire the value on the last node
         const newNodes = [...nodes];
         const lastValue = newNodes[newNodes.length - 1].value;
 
@@ -93,6 +93,13 @@ export default function NodeAdder()         // defines the main component functi
         setNodes([...newNodes]);
 
     } // end of rotateNodes()
+
+    const removeFirst = () => {
+        if (nodes.length === 0)
+            return;
+
+        setNodes(prevNodes => prevNodes.slice(1));
+    } // end of removeFirst()
 
     // clears all the nodes and empties the current array from the nodes
     const clearNodes = () => {
@@ -140,10 +147,10 @@ export default function NodeAdder()         // defines the main component functi
         // feel free to play and find a suitable curve offset
 
         const loopOffsetX = 100; // wider horizontal stretch for self-loop
-        const loopOffsetY = 125; // taller vertical stretch for self-loop
+        const loopOffsetY = 75; // taller vertical stretch for self-loop
 
         const multiCurveOffsetX = 120; // wider horizontal stretch for multi-node curve
-        const multiCurveOffsetY = 150; // taller vertical stretch for multi-node curve
+        const multiCurveOffsetY = 75; // taller vertical stretch for multi-node curve
 
         /* -------------------- SVG PATH CONSTRUCTION -------------------------
         The first parts creates an SVG path if there is only one node, a ternary operator checks if there is
@@ -159,16 +166,16 @@ export default function NodeAdder()         // defines the main component functi
         -------------------------------------------------------------------- */
         const newPath = isSingleNode
             ? `                     
-            M ${startX} ${startY}
+            M ${startX} ${startY - 50}
             C ${startX + loopOffsetX - 50} ${startY + loopOffsetY},
-              ${startX - nodeWidth - loopOffsetX + 50} ${startY + loopOffsetY - 20},
-              ${endX } ${endY}
+              ${startX - nodeWidth - loopOffsetX + 60} ${startY + loopOffsetY - 20},
+              ${endX } ${endY - 40}
             `
             : `
-            M ${startX} ${startY}
+            M ${startX} ${startY - 50}
             C ${startX + multiCurveOffsetX} ${startY + multiCurveOffsetY},
               ${endX - multiCurveOffsetX} ${endY + multiCurveOffsetY},
-              ${endX} ${endY}
+              ${endX} ${endY - 40}
         `;
 
         // stores this constructed SVG path string in the state
@@ -195,18 +202,24 @@ export default function NodeAdder()         // defines the main component functi
 
                 { /* Adds a node after the tail (at the pseudo head) */}
                 <button onClick={addAfterTail} className={linkedListStyles.addNode} type="button">
-                    Add After Tail
+                    Add First
                 </button>
 
                 { /* Adds a node at the tail */}
                 <button onClick={addAtTail} className={linkedListStyles.addNode} type="button">
-                    Add at Tail
+                    Add Last
                 </button>
 
                 { /* Rotates the nodes */ }
                 { nodes.length > 1 && (
                     <button onClick={rotateNodes} className={linkedListStyles.addNode} type="button">
-                        Rotate Nodes
+                        Rotate
+                    </button>
+                )}
+
+                {nodes.length > 0 && (
+                    <button onClick={removeFirst} className={linkedListStyles.addNode} type="button">
+                        Remove First
                     </button>
                 )}
 
@@ -216,6 +229,16 @@ export default function NodeAdder()         // defines the main component functi
                         Clear Nodes
                     </button>
                 )}
+            </div>
+
+            <div className={linkedListStyles.extraMethods}>
+                <h3>Structure Information:</h3>
+                <div className={linkedListStyles.methods}>
+                    <p className={linkedListStyles.method}>isEmpty(): {nodes.length > 0 ? "false" : "true"}</p>
+                    <p className={linkedListStyles.method}>size(): {nodes.length}</p>
+                    <p className={linkedListStyles.method}>first(): {nodes.length > 0 ? nodes[0].value : "null"}</p>
+                    <p className={linkedListStyles.method}>last(): {nodes.length > 0 ? nodes[nodes.length - 1].value : "null"}</p>
+                </div>
             </div>
 
             <div

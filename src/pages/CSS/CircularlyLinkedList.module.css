@@ -5,7 +5,8 @@
     row-gap: 3rem;
     margin-top: 2rem;
     position: relative;
-    padding-bottom: 10rem;
+    padding-bottom: 15rem;
+    padding-top: 5rem;
 }
 
 .nodeWrapper {
