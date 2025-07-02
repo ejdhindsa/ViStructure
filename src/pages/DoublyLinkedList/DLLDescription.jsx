@@ -1,4 +1,3 @@
-import {Fragment, useState} from "react";
 import styles from "../CSS/listDescription.module.css";
 
 export default function DoublyLinkedListDescription() {
