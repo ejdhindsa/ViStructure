@@ -42,6 +42,20 @@ export default function AddNode()
         setInputValue("");
     } // end of addAtTrailer()
 
+    const removeFirst = () => {
+        if (nodes.length === 0)
+            return;
+
+        setNodes(prevNodes => prevNodes.slice(1));
+    } // end of removeFirst()
+
+    const removeLast = () => {
+        if (nodes.length === 0)
+            return;
+
+        setNodes(prevNodes => prevNodes.slice(0, (nodes.length - 1)));
+    } // end of removeLast()
+
     const clearNodes = () => {
         // clears the nodes now there are no nodes
         setNodes([]);
@@ -54,21 +68,49 @@ export default function AddNode()
                     type="text"
                     value={inputValue}
                     onChange={(e) => setInputValue(e.target.value)}
-                    onKeyDown={(e) => e.key === "Enter" && addAtHeader()}
+                    onKeyDown={(e) => e.key === "Enter" && addAtTrailer()}
                     placeholder="Node Value"
                     className={linkedListStyles.inputField}
                 />
                 <button onClick={addAtHeader} className={linkedListStyles.addNode} type="button">
-                    Add After Header
+                    Add First
                 </button>
                 <button onClick={addAtTrailer} className={linkedListStyles.addNode} type="button">
-                    Add Before Trailer
+                    Add Last
                 </button>
+                {nodes.length > 0 && (
+                    <button onClick={removeFirst} className={linkedListStyles.addNode} type="button">
+                        Remove First
+                    </button>
+                )}
+                {nodes.length > 0 && (
+                    <button onClick={removeLast} className={linkedListStyles.addNode} type="button">
+                        Remove Last
+                    </button>
+                )}
                 {nodes.length > 0 && (
                     <button onClick={clearNodes} className={linkedListStyles.clearButton} type="button">
                         Clear Nodes
                     </button>
                 )}
+            </div>
+
+            <div className={linkedListStyles.extraMethods}>
+                <h3>Structure Information:</h3>
+                <div className={linkedListStyles.methods}>
+                    <p className={linkedListStyles.method}>
+                        isEmpty(): {nodes.length > 0 ? "false" : "true"}
+                    </p>
+                    <p className={linkedListStyles.method}>
+                        size(): {nodes.length}
+                    </p>
+                    <p className={linkedListStyles.method}>
+                        first(): {nodes.length > 0 ? nodes[0].value : "null"}
+                    </p>
+                    <p className={linkedListStyles.method}>
+                        last(): {nodes.length > 0 ? nodes[nodes.length - 1].value : "null"}
+                    </p>
+                </div>
             </div>
 
             <div className={styles.nodesContainer}>

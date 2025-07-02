@@ -3,9 +3,10 @@
     flex-wrap: wrap;
     justify-content: center;
     row-gap: 3rem;
-    margin-top: 10rem;
+    margin-top: 7.5rem;
     position: relative;
     color: #fff;
+    padding-bottom: 10rem;
 }
 
 .sentinel {
