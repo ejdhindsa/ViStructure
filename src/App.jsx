@@ -11,6 +11,7 @@ import CircularlyLinkedList from "./pages/CircularlyLinkedList/CircularlyLinkedL
 import DoublyLinkedList from "./pages/DoublyLinkedList/DoublyLinkedList";
 import CircularDoublyLinkedList from "./pages/CircularDoublyLinkedList/CircularDoublyLinkedList";
 import Stack from "./pages/Stack/Stack"
+import Queue from "./pages/Queue/Queue"
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             <Route path="/doublylinkedlist" element={<DoublyLinkedList />} />
             <Route path="/circulardoublylinkedlist" element={<CircularDoublyLinkedList />} />
             <Route path="/stack" element={<Stack />} />
+            <Route path="/queue" element={<Queue />} />
         </Routes>
 
     </Router>
