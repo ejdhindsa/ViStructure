@@ -22,15 +22,28 @@ export default function StackDescription() {
             >
               ▶
             </span>
-                <span className={styles.dropdownLabel}>Description</span>
+                <span className={styles.dropdownLabel}>Structure Description</span>
             </button>
             {expanded && (
                 <div className={styles.dropdownContent} id="sll-desc">
                     <p>
-                        A Stack is a linear data structure that follows a particular order in which the operations are
-                        performed. The order may be LIFO(Last In First Out) or FILO(First In Last Out). LIFO implies
-                        that the element that is inserted last, comes out first and FILO implies that the element that
-                        is inserted first, comes out last.
+                        A stack is a collection of objects that are inserted and removed according to last-in first-out
+                        (LIFO) principle. A user may insert objects into a stack at any time, but may only access or
+                        remove the most recently inserted object that remains (the "top" of the stack).
+                        <br /> <br/>
+                        <span className={styles.methodsList}>
+                            A Stack consists of following methods: <br/>
+                            i. <span className={styles.methodName}>size():</span>
+                                Returns the size of the stack. <br/>
+                            ii. <span className={styles.methodName}>isEmpty():</span>
+                                Returns true if the stack is empty, false otherwise. <br/>
+                            iii. <span className={styles.methodName}>top():</span>
+                                Returns (but does not remove) the top most element in the stack. <br/>
+                            iv. <span className={styles.methodName}>push(e):</span>
+                                Adds a new element to the top of the stack. <br/>
+                            v. <span className={styles.methodName}>pop():</span>
+                                Removes and returns the element on top of the stack. <br/>
+                        </span>
                     </p>
                 </div>
             )}

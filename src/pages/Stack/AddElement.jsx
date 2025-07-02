@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 // import structure styles
 import structureStyles from '../CSS/Structures.module.css';
 import styles from "../CSS/Stack.module.css";
+import linkedListStyles from "../CSS/Structures.module.css";
 
 export default function AddElement()
 {
@@ -54,11 +55,11 @@ export default function AddElement()
                     className={structureStyles.inputField}
                 />
                 <button onClick={enqueue} className={structureStyles.addNode} type="button">
-                    Enqueue
+                    Push
                 </button>
                 {elements.length > 0 && (
                     <button onClick={dequeue} className={structureStyles.addNode} type="button">
-                        Dequeue
+                        Pop
                     </button>
                 )}
                 {elements.length > 0 && (
@@ -66,6 +67,15 @@ export default function AddElement()
                         Clear
                     </button>
                 )}
+            </div>
+
+            <div className={linkedListStyles.extraMethods}>
+                <h3>Structure Information:</h3>
+                <div className={linkedListStyles.methods}>
+                    <p className={linkedListStyles.method}>isEmpty(): {elements.length > 0 ? "false" : "true"}</p>
+                    <p className={linkedListStyles.method}>size(): {elements.length}</p>
+                    <p className={linkedListStyles.method}>top(): {elements.length > 0 ? elements[0].value : "null"}</p>
+                </div>
             </div>
 
             <div className={styles.elementContainer}>

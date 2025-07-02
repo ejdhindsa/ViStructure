@@ -1,9 +1,10 @@
 .elementContainer {
-    margin: -5rem;
+    margin: 5rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    min-height: 10vh;
 }
 
 .elements {
