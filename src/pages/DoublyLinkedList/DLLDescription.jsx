@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styles from "../CSS/listDescription.module.css";
 
 export default function DoublyLinkedListDescription() {
@@ -25,7 +26,7 @@ export default function DoublyLinkedListDescription() {
             {expanded && (
                 <div className={styles.dropdownContent} id="sll-desc">
                     <p>
-                        A Doubly Linked List can be traversed froward and backward. The nodes in this data structure
+                        A Doubly Linked List can be traversed forward and backward. The nodes in this data structure
                         store the following information: an element, link to the previous node, and link to the
                         next node.
                         <br /> <br/>
@@ -36,7 +37,7 @@ export default function DoublyLinkedListDescription() {
                             ii. <span className={styles.methodName}>isEmpty():</span>
                                 Returns true if the list is empty, false otherwise. <br/>
                             iii. <span className={styles.methodName}>first():</span>
-                                Returns (but does not remove) thee first element in the list. <br/>
+                                Returns (but does not remove) the first element in the list. <br/>
                             iv. <span className={styles.methodName}>last():</span>
                                 Returns (but does not remove) the last element in the list. <br/>
                             v. <span className={styles.methodName}>addFirst(element):</span>
