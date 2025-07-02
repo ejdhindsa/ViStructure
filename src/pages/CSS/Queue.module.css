@@ -1,0 +1,31 @@
+.elementContainer {
+    margin: 5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    min-height: 10vh;
+}
+
+.elements {
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    border: 1px solid #a3a3a3;
+    padding: 1rem 3rem;
+    min-width: 10rem;
+    max-width: 15rem;
+    color: #fff;
+}
+
+.element {
+    display: flex;
+    color: inherit;
+    justify-content: center;
+    width: 100%;
+    font-size: 1.4rem;
+}
+
+.elements:hover {
+    transition: 0.5s ease-in-out;
+    color: #d8b60c;
+}

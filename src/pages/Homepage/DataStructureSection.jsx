@@ -143,6 +143,15 @@ export default function DataStructuresSection()
                     </Link>
                 </div>
 
+                <div className={styles.tile}>
+                    <Link to="/queue" className={styles.link}>
+                        <img src="/assets/images/Stack.png" className={styles.tileImage} alt="queue"/>
+                        <div className={styles.tileLink}>
+                            Queues
+                        </div>
+                    </Link>
+                </div>
+
             </div>
         </>
     ) // end of return
