@@ -1,4 +1,4 @@
-/* BargandSans */
+/* Bargand Sans */
 @font-face {
     font-family: 'BargandSans, sans-serif';
     src: url('../public/assets/fonts/BagnardSans.otf') format('opentype');
@@ -35,6 +35,21 @@
     font-family: 'TextGrey';
     src: url('../public/assets/fonts/TextGrey-BoldItalic.otf') format('opentype');
     font-weight: 700;
+    font-style: italic;
+    font-display: swap;
+}
+
+/* IBM Plex */
+@font-face {
+    font-family: 'IBM Plex Sans';
+    src: url('../public/assets/fonts/IBMPlexSans.ttf') format('truetype');
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'IBM Plex Sans';
+    src: url('../public/assets/fonts/IBMPlexSansItalic.ttf') format('truetype');
     font-style: italic;
     font-display: swap;
 }

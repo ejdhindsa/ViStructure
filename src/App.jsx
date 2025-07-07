@@ -4,7 +4,7 @@ import './App.css';
 import './fonts.css'
 import './global.css'
 
-import Header from './components/Header'
+import {Header} from './components/Header'
 import Homepage from './pages/Homepage/Homepage'
 import SinglyLinkedList from './pages/SinglyLinkedList/SinglyLinkedList'
 import CircularlyLinkedList from "./pages/CircularlyLinkedList/CircularlyLinkedList";

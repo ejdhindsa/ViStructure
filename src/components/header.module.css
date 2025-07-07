@@ -1,32 +1,81 @@
 .header{
-    font-family: 'BargandSans, sans-serif', sans-serif;
+    font-family: 'IBM Plex Sans', sans-serif, sans-serif;
     display: flex;
     height: 80px;
     width: 100%;
-    background-color: #0a0a08;
-    border-bottom: 1px solid #393938;
+    background-color: #0a0908;
     align-items: center;
-    padding: 0 25px;
-    letter-spacing: 0.15rem;
-    position: fixed;
+    padding: 0 50px;
+    letter-spacing: 0.10rem;
+    position: sticky;
     z-index: 99;
+    top: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.shrunk {
+    height: 40px;
+    padding: 10px 20px;
+    background-color: rgba(10, 9, 8, 0.5);
+    backdrop-filter: blur(8px);
+}
+
+.leftAlign {
+    display: flex;
+    align-items: center;
+    align-content: flex-start;
+    justify-content: flex-start;
+    width: 50%;
+}
+
+.rightAlign {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    align-content: flex-end;
+    justify-content: flex-end;
 }
 
 .headerImage{
+    transition: 0.3s ease-in-out;
     height: 50px;
     width: 50px;
 }
 
+.shrunk .headerImage {
+    transition: 0.3s ease-in-out;
+    width: 20px;
+    height: 20px;
+}
+
 .headerText{
-    font-size: 2.5rem;
-    color: #c5a445;
-    padding-left: 25px;
+    transition:0.3s ease-in-out;
+    font-size: 3.5rem;
+    color: #c69c72;
+    padding-left: 15px;
+}
+
+.shrunk .headerText {
+    transition: 0.3s ease-in-out;
+    font-size: 2rem;
 }
 
 .highlight {
-    color: white;
+    color: #f1fffa;
 }
 
 .headLink {
     text-decoration: none;
+}
+
+.githubImage {
+    transition: 0.3s ease-in-out;
+    width: 30px;
+    height: 30px;
+}
+
+.shrunk .githubImage {
+    transition: 0.3s ease-in-out;
+    width: 20px;
+    height: 20px;
 }
