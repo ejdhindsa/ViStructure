@@ -1,106 +1,115 @@
 .homepage {
     color: #d4d4d4;
-    padding: 10rem 10rem;
+    padding: 0 10rem;
 }
 
 .hero {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    align-items: center;
+    justify-content:  center;
+}
+
+.heroHeader {
+    padding-bottom: 5rem;
+}
+
+.heroHeader > h1{
+    font-size: 4rem;
+    text-align: center;
+    color: #f1fffa;
+    letter-spacing: 0.20rem;
+    padding-bottom: 1rem;
+}
+
+.heroHeader > h2 {
+    font-size: 3rem;
+    color: #c69c72;
+    letter-spacing: 0.13rem;
+    text-align: center;
+}
+
+.heroText > p {
+    font-size: 2rem;
+    text-align: center;
+    line-height: 2.35rem;
+    letter-spacing: 0.03rem;
+    padding: 0 15rem;
+}
+
+.heroNav {
     padding: 5rem 0;
 }
 
-.hero > h1{
-    font-size: 4rem;
-    text-align: center;
-    padding-bottom: 3rem;
-    color: #c5a445;
-    letter-spacing: 0.20rem;
+.linkButton {
+    transition: 0.3s ease-in-out;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0.8rem;
+    border-radius: 0.5rem;
+    border: 2px solid #d4d4d4;
+    font-size: 1.25rem;
+    font-weight: 550;
 }
 
-.hero > p {
-    font-size: 2rem;
-    text-align: justify;
-    line-height: 2.35rem;
-    letter-spacing: 0.05rem;
+.linkButton,
+.linkButton:visited,
+.linkButton:link {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+.linkButton:hover {
+    transition: 0.5s ease-in-out;
+    border-radius: 1rem;
+    border: 2px solid #c69c72;
+    color: #c69c72;
+}
+
+
+.linkButton > img {
+    width: 2.5rem;
+    height: 2.5rem;
+    margin: 0 1rem;
 }
 
 .mainDivision {
     display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
     width: 100%;
     gap: 2rem;
-    padding: 5rem 0;
     align-items: center;
+    padding-bottom: 15rem;
 }
 
 .subDivisionOne {
-    color: #c5a445;
+    color: #c69c72;
     font-size: 2.5rem;
-    text-align: center;
-    width: 35%;
+    width: 30%;
 }
+
 .subDivisionTwo {
-    font-size: 1.8rem;
+    font-size: 2rem;
     text-align: justify;
-    width: 65%;
+    width: 70%;
 }
 
-.link {
-    color: #c5a445;
-    text-decoration: none;
-    font-size: 1.5rem;
-    display: block;
-}
-
-.dataStructureHeader {
+.structureHeader {
     display: flex;
-    margin: 5rem auto;
+    flex-direction: row;
+    align-content: center;
     justify-content: center;
-    font-size: 3rem;
-    font-weight: bold;
-    color: #c5a445;
-}
-
-.structureTiles {
-    display: flex;
-    padding: 5rem 0;
-}
-
-.tile {
-    transition: 0.35s ease-in-out;
-    background-color: rgba(0,0,0, 25%);
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    width: 23%;
-    padding: 1rem 1rem;
-    margin: 0 auto;
-    border-radius: 10px;
-    box-shadow: 5px 5px 10px 0 #0e0e0e;
-    border: 1px solid #241f04;
-}
-
-.tile:hover {
-    transition: 0.5s ease-in-out;
-    background-color: rgba(0,0,0, 0.50);
-    transform: scale(1.1);
-}
-
-.tileImage {
-    display: flex;
-    border-radius: 5px 5px 0 0;
-}
-
-.tileLink {
-    padding-top: 1.5rem;
-    padding-bottom: 0.5rem;
-    display: flex;
-    justify-content: center;
-    font-size: 1.35rem;
+    margin-bottom: 5rem;
 }
 
 .passwordForm {
-    margin-top: 2rem;
     display: flex;
     justify-content: center;
-    gap: 10px;
+    gap: 2.5rem;
 }
 
 .passwordInput {
@@ -110,7 +119,7 @@
     border-radius: 5px;
     outline: none;
     background-color: transparent;
-    border-bottom: 1px solid #d5b508;
+    border-bottom: 1px solid #c69c72;
     border-top: none;
     border-right: none;
     border-left: none;
@@ -120,37 +129,95 @@
 
 .passwordInput:hover {
     transition: 0.5s ease-in-out;
-    background-color: #1b1b1b;
+    background-color: rgba(16, 16, 16, 0.7);
 }
 
 .passwordInput:focus {
     transition: 0.5s ease-in-out;
-    background-color: #1b1b1b;
+    background-color: rgba(27, 27, 27, 0.7);
 }
 
 .passwordButton {
     transition: 0.5s ease-in-out;
-    padding: 8px 12px;
+    padding: 0.8rem 2rem;
     font-size: 1.1rem;
     font-weight: bold;
     border-radius: 5px;
-    background-color: #f0f0f0;
-    color: #000000;
-    border: 1px solid #000000;
+    background-color: transparent;
+    color: #d4d4d4;
+    border: 2px solid #d4d4d4;
     cursor: pointer;
 }
 
 .passwordButton:hover {
     transition: 0.5s ease-in-out;
-    background-color: #c5a445;
-    color: black;
-    border: 1px solid #ffffff;
+    color: #c69c72;
+    border: 2px solid #c69c72;;
 }
 
 
 .successMessage {
     text-align: center;
-    color: #d8b60c;
+    justify-content: center;
+    padding: 0 5rem;
+    color: #c69c72;
     margin-top: 15px;
-    font-weight: bold;
+    font-weight: 500;
+}
+
+.structureTiles {
+    display: flex;
+    padding: 1.5rem 0;
+}
+
+.tile {
+    transition: 0.35s ease-in-out;
+    background-color: rgba(0,0,0, 25%);
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    padding: 1rem 1rem;
+    margin: 0 auto;
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px 0 #0e0e0e;
+    border: 1px solid #d4d4d4;
+    color: #d4d4d4;
+}
+
+.tile:hover {
+    transition: 0.5s ease-in-out;
+    background-color: rgba(0,0,0, 0.50);
+    transform: scale(1.05);
+    color: #c69c72;
+}
+
+
+.link {
+    color: inherit;
+    text-decoration: none;
+    font-size: 1.5rem;
+    display: flex;
+    min-height: 8rem;
+}
+
+.linkName{
+    padding: 0.5rem 1rem;
+    width: 35%;
+    justify-content: center;
+    font-size: 1.7rem;
+    font-weight: 500;
+    text-align: center;
+    align-content: center;
+}
+
+.linkDescription{
+    width: 65%;
+    padding: 0.5rem 2rem;
+    color: #d4d4d4;
+    text-align: justify;
+    align-content: center;
+}
+
+.bottom {
+    min-height: 10rem;
 }

@@ -5,7 +5,7 @@ import './fonts.css'
 import './global.css'
 
 import {Header} from './components/Header'
-import Homepage from './pages/Homepage/Homepage'
+import {Homepage} from './pages/Homepage/Homepage'
 import SinglyLinkedList from './pages/SinglyLinkedList/SinglyLinkedList'
 import CircularlyLinkedList from "./pages/CircularlyLinkedList/CircularlyLinkedList";
 import DoublyLinkedList from "./pages/DoublyLinkedList/DoublyLinkedList";

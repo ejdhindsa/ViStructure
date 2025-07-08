@@ -51,38 +51,40 @@ export default function DataStructuresSection()
 
     return (
         <>
-            <div className={styles.dataStructureHeader}>
-                Data Structures
+            {/* CDLL Unlocker */ }
+
+            <div className={styles.structureHeader}>
+
+                {/* Password input is only shown if CDLL is locked */}
+                {!isUnlocked && (
+                    <form onSubmit={handlePasswordSubmit} className={styles.passwordForm}>
+                        <input
+                            type="text"
+                            value={password}
+                            placeholder="Enter Password to Unlock CDLL"
+                            onChange={(e) => setPassword(e.target.value)}
+                            className={styles.passwordInput}
+                        />
+                        <button type="submit" className={styles.passwordButton}>Unlock</button>
+                    </form>
+                )}
+
+                {isUnlocked && (
+                    <form className={styles.passwordForm}>
+                        <button
+                            onClick={() => {
+                                localStorage.removeItem("cdllUnlocked");
+                                setIsUnlocked(false);
+                                setSuccessMessage("");
+                            }}
+                            className={styles.passwordButton}
+                        >
+                            Lock CDLL
+                        </button>
+                    </form>
+                )}
+
             </div>
-
-            {/* Password input is only shown if CDLL is locked */}
-            {!isUnlocked && (
-                <form onSubmit={handlePasswordSubmit} className={styles.passwordForm}>
-                    <input
-                        type="password"
-                        value={password}
-                        placeholder="Enter Password to Unlock CDLL"
-                        onChange={(e) => setPassword(e.target.value)}
-                        className={styles.passwordInput}
-                    />
-                    <button type="submit" className={styles.passwordButton}>Unlock</button>
-                </form>
-            )}
-
-            {isUnlocked && (
-                <form className={styles.passwordForm}>
-                    <button
-                        onClick={() => {
-                            localStorage.removeItem("cdllUnlocked");
-                            setIsUnlocked(false);
-                            setSuccessMessage("");
-                        }}
-                        className={styles.passwordButton}
-                    >
-                        Lock CDLL
-                    </button>
-                </form>
-            )}
 
             {/* Success Message */}
             {successMessage && (
@@ -90,30 +92,66 @@ export default function DataStructuresSection()
             )}
 
             <div className={styles.structureTiles}>
-
                 <div className={styles.tile}>
                     <Link to="/singlylinkedlist" className={styles.link}>
-                        <img src="/assets/images/SLL.png" className={styles.tileImage} alt="Singly Linked List"/>
-                        <div className={styles.tileLink}>
-                            Singly Linked List
+                        <div className={styles.linkName}>
+                            SINGLY <br/> LINKED LIST
+                        </div>
+                        <div className={styles.linkDescription}>
+                            A singly linked list is a sequence of nodes where each node points to the next. It starts
+                            at the head and ends with null.
                         </div>
                     </Link>
                 </div>
 
                 <div className={styles.tile}>
                     <Link to="/circularlylinkedlist" className={styles.link}>
-                        <img src="/assets/images/CLL.png" className={styles.tileImage} alt="Circularly Linked List"/>
-                        <div className={styles.tileLink}>
-                            Circularly Linked List
+                        <div className={styles.linkName}>
+                            CIRCULARLY LINKED LIST
+                        </div>
+                        <div className={styles.linkDescription}>
+                            A circularly linked list is a sequence of nodes where each node points to the next, and the
+                            last node points back to the head, forming a circle.
+                        </div>
+                    </Link>
+                </div>
+            </div>
+
+            <div className={styles.structureTiles}>
+                <div className={styles.tile}>
+                    <Link to="/doublylinkedlist" className={styles.link}>
+                        <div className={styles.linkName}>
+                            DOUBLY <br/> LINKED LIST
+                        </div>
+                        <div className={styles.linkDescription}>
+                            A doubly linked list is a sequence of nodes where each node points to both its next and
+                            previous nodes, allowing traversal in both directions.
                         </div>
                     </Link>
                 </div>
 
                 <div className={styles.tile}>
-                    <Link to="/doublylinkedlist" className={styles.link}>
-                        <img src="/assets/images/DLL.png" className={styles.tileImage} alt="Doubly Linked List"/>
-                        <div className={styles.tileLink}>
-                            Doubly Linked List
+                    <Link to="/stack" className={styles.link}>
+                        <div className={styles.linkName}>
+                            STACKS
+                        </div>
+                        <div className={styles.linkDescription}>
+                            A stack is a linear data structure that follows the Last In, First Out (LIFO) principle,
+                            where elements are added and removed from the top.
+                        </div>
+                    </Link>
+                </div>
+            </div>
+
+            <div className={styles.structureTiles}>
+                <div className={styles.tile}>
+                    <Link to="/queue" className={styles.link}>
+                        <div className={styles.linkName}>
+                            QUEUES
+                        </div>
+                        <div className={styles.linkDescription}>
+                            A queue is a data structure that follows the First In, First Out (FIFO) principle,
+                            elements are added at the rear and removed from the front.
                         </div>
                     </Link>
                 </div>
@@ -122,37 +160,20 @@ export default function DataStructuresSection()
                 {isUnlocked && (
                     <div className={styles.tile}>
                         <Link to="/circulardoublylinkedlist" className={styles.link}>
-                            <img src="/assets/images/CDLL.png" className={styles.tileImage} alt="Circular Doubly Linked List"/>
-                            <div className={styles.tileLink}>
-                                Circular Doubly Linked List
+                            <div className={styles.linkName}>
+                                CIRCULAR DOUBLY LINKED LIST
+                            </div>
+                            <div className={styles.linkDescription}>
+                                A circular doubly linked list has nodes linked in both directions, with the last node
+                                pointing to the first and vice versa, forming a loop.
                             </div>
                         </Link>
                     </div>
                 )}
-
             </div>
 
-            <div className={styles.structureTiles}>
+            <div className={styles.bottom}></div>
 
-                <div className={styles.tile}>
-                    <Link to="/stack" className={styles.link}>
-                        <img src="/assets/images/Stack.png" className={styles.tileImage} alt="stack"/>
-                        <div className={styles.tileLink}>
-                            Stacks
-                        </div>
-                    </Link>
-                </div>
-
-                <div className={styles.tile}>
-                    <Link to="/queue" className={styles.link}>
-                        <img src="/assets/images/Queue.png" className={styles.tileImage} alt="queue"/>
-                        <div className={styles.tileLink}>
-                            Queues
-                        </div>
-                    </Link>
-                </div>
-
-            </div>
         </>
     ) // end of return
 
