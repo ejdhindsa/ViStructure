@@ -102,4 +102,4 @@ export default function AddElement()
         </div>
     ); // end of return
 
-} // end of AddElement()
+} // end of StackVisualiser()

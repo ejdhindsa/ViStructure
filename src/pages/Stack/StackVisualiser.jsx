@@ -6,7 +6,7 @@ import structureStyles from '../CSS/Structures.module.css';
 import styles from "../CSS/Stack.module.css";
 import linkedListStyles from "../CSS/Structures.module.css";
 
-export default function AddElement()
+export default function StackVisualiser()
 {
     // using useState to create elements to be added in the stack
     const [elements, setElements] = useState([]);
@@ -17,6 +17,12 @@ export default function AddElement()
         // return when the input is empty
         if (inputValue.trim() === "")
             return;
+
+        if (elements.length >= 10)
+        {
+            alert("Maximum 10 elements allowed!");
+            return;
+        } // end of if
 
         // create the array of elements
         setElements([{id: Date.now(), value: inputValue},
@@ -45,16 +51,32 @@ export default function AddElement()
 
     return (
         <div className={structureStyles.container}>
+
+            <div className={linkedListStyles.extraMethods}>
+                <h3>Structure Information:</h3>
+                <div className={linkedListStyles.methods}>
+                    <p className={linkedListStyles.method}>isEmpty(): {elements.length > 0 ? "false" : "true"}</p>
+                    <p className={linkedListStyles.method}>size(): {elements.length}</p>
+                    <p className={linkedListStyles.method}>top(): {elements.length > 0 ? elements[0].value : "null"}</p>
+                </div>
+            </div>
+
             <div className={structureStyles.controls}>
                 <input
                     type="text"
                     value={inputValue}
                     onChange={(e) => setInputValue(e.target.value)}
                     onKeyDown={(e) => e.key === "Enter" && enqueue()}
-                    placeholder="Element Name"
+                    placeholder="Input (max 15 chars)"
+                    maxLength={15}
                     className={structureStyles.inputField}
                 />
-                <button onClick={enqueue} className={structureStyles.addNode} type="button">
+                <button
+                    onClick={enqueue}
+                    className={structureStyles.addNode}
+                    type="button"
+                    disabled={elements.length >= 10}
+                >
                     Push
                 </button>
                 {elements.length > 0 && (
@@ -67,15 +89,6 @@ export default function AddElement()
                         Clear
                     </button>
                 )}
-            </div>
-
-            <div className={linkedListStyles.extraMethods}>
-                <h3>Structure Information:</h3>
-                <div className={linkedListStyles.methods}>
-                    <p className={linkedListStyles.method}>isEmpty(): {elements.length > 0 ? "false" : "true"}</p>
-                    <p className={linkedListStyles.method}>size(): {elements.length}</p>
-                    <p className={linkedListStyles.method}>top(): {elements.length > 0 ? elements[0].value : "null"}</p>
-                </div>
             </div>
 
             <div className={styles.elementContainer}>
@@ -105,4 +118,4 @@ export default function AddElement()
         </div>
     ) // end of return
 
-} // end of AddElement
+} // end of StackVisualiser
