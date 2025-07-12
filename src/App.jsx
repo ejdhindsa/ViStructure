@@ -12,23 +12,29 @@ import DoublyLinkedList from "./pages/DoublyLinkedList/DoublyLinkedList";
 import CircularDoublyLinkedList from "./pages/CircularDoublyLinkedList/CircularDoublyLinkedList";
 import Stack from "./pages/Stack/Stack"
 import Queue from "./pages/Queue/Queue"
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   return (
-    <Router>
-        <Header />
+      <>
+          <Router>
+              <ScrollToTop />
 
-        <Routes>
-            <Route path="/" element={<Homepage />} />
-            <Route path="/singlylinkedlist" element={<SinglyLinkedList />} />
-            <Route path="/circularlylinkedlist" element={<CircularlyLinkedList />} />
-            <Route path="/doublylinkedlist" element={<DoublyLinkedList />} />
-            <Route path="/circulardoublylinkedlist" element={<CircularDoublyLinkedList />} />
-            <Route path="/stack" element={<Stack />} />
-            <Route path="/queue" element={<Queue />} />
-        </Routes>
+              <Header />
 
-    </Router>
+              <Routes>
+                  <Route path="/" element={<Homepage />} />
+                  <Route path="/singlylinkedlist" element={<SinglyLinkedList />} />
+                  <Route path="/circularlylinkedlist" element={<CircularlyLinkedList />} />
+                  <Route path="/doublylinkedlist" element={<DoublyLinkedList />} />
+                  <Route path="/circulardoublylinkedlist" element={<CircularDoublyLinkedList />} />
+                  <Route path="/stack" element={<Stack />} />
+                  <Route path="/queue" element={<Queue />} />
+              </Routes>
+
+          </Router>
+      </>
+
   );
 }
 
