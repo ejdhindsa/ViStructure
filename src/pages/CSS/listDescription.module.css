@@ -1,73 +1,33 @@
-.dropdownContainer {
+.description {
     width: 80%;
     margin: 0 auto;
     padding: 3rem 10rem;
     text-align: left;
-    font-family: TextGrey, serif;
+    font-family: 'IBM Plex Sans', serif;
 }
 
-.dropdownToggle {
-    background: none;
-    border: none;
-    color: #c5a445;
-    font-size: 1.5rem;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    outline: none;
-    padding: 0.5rem 0;
-    transition: color 0.2s;
-}
-
-.dropdownToggle:hover {
-    color: #a88b32;
-}
-
-.header {
-    font-family: TextGrey, serif;
-    padding-bottom: 3rem;
-    font-size: 1.5rem;
-    text-align: center;
-    color: #c5a445;
-    padding-top: 10rem;
-}
-
-.arrowIcon {
-    display: inline-block;
-    transition: transform 0.3s;
-    margin-right: 0.5rem;
-    font-size: 1.5rem;
-}
-
-.arrowRight {
-    transform: rotate(0deg);
-}
-
-.arrowDown {
-    transform: rotate(90deg);
-}
-
-.dropdownLabel {
-    user-select: none;
-    padding-left: 1rem;
-}
-
-.dropdownContent {
-    background: #181818;
-    color: #fff;
-    border-radius: 0.5rem;
+.descriptionText {
+    background: rgba(16, 16, 16, 0.5);
+    color: #eaeaea;
+    border-radius: 1rem;
     margin-top: 0.5rem;
-    padding: 3rem 5rem;
+    padding: 3.5rem 6rem;
     font-size: 1.65rem;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.9);
     animation: fadeIn 0.3s;
-    line-height: 2rem;
+    line-height: 2.15rem;
+    letter-spacing: 0.001rem;
+}
+
+.descriptionHeader {
+    color: #c69c72;
+    font-size: 1.7rem;
+    padding-bottom: 0.5rem;
 }
 
 .methodsList {
     line-height: 2.5rem;
-    font-size: 1.5rem;
+    font-size: 1.55rem;
 }
 
 .methodName {
@@ -75,6 +35,6 @@
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-10px);}
+    from { opacity: 0; transform: translateY(10px);}
     to   { opacity: 1; transform: translateY(0);}
 }

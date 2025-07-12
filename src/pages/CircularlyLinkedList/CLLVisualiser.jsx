@@ -34,6 +34,11 @@ export default function NodeAdder()         // defines the main component functi
         if (inputValue.trim() === "")
             return;
 
+        if (nodes.length >= 6) {
+            alert("You can't add more than 6 nodes.");
+            return;
+        }
+
         // ...nodes spread the existing nodes
         // adds new node object with date as id and userInput as its value
         setNodes([
@@ -54,6 +59,11 @@ export default function NodeAdder()         // defines the main component functi
     const addAtTail = () => {
         if (inputValue.trim() === "")
             return;
+
+        if (nodes.length >= 6) {
+            alert("You can't add more than 6 nodes.");
+            return;
+        }
 
         // ...nodes spreads the existing nodes
         setNodes([...nodes, {
@@ -185,6 +195,29 @@ export default function NodeAdder()         // defines the main component functi
 
     return (
         <div className={linkedListStyles.container}>
+
+            <div className={linkedListStyles.extraMethods}>
+                <h3>Structure Information:</h3>
+                <div className={linkedListStyles.methods}>
+                    <p className={linkedListStyles.method}>
+                        <span className={linkedListStyles.methodName}>isEmpty(): </span>
+                        {nodes.length > 0 ? "false" : "true"}
+                    </p>
+                    <p className={linkedListStyles.method}>
+                        <span className={linkedListStyles.methodName}>size(): </span>
+                            {nodes.length}
+                    </p>
+                    <p className={linkedListStyles.method}>
+                        <span className={linkedListStyles.methodName}>first(): </span>
+                            {nodes.length > 0 ? nodes[0].value : "null"}
+                    </p>
+                    <p className={linkedListStyles.method}>
+                        <span className={linkedListStyles.methodName}>last(): </span>
+                            {nodes.length > 0 ? nodes[nodes.length - 1].value : "null"}
+                    </p>
+                </div>
+            </div>
+
             <div className={linkedListStyles.controls}>
                 { /*
                    React Input: value takes the input value.
@@ -194,19 +227,30 @@ export default function NodeAdder()         // defines the main component functi
                 <input
                     type="text"
                     value={inputValue}
+                    maxLength={10}
                     onChange={(e) => setInputValue(e.target.value)}
                     onKeyDown={(e) => e.key === "Enter" && addAtTail()}
-                    placeholder="Node Value"
+                    placeholder="Input (max 10 chars)"
                     className={linkedListStyles.inputField}
                 />
 
                 { /* Adds a node after the tail (at the pseudo head) */}
-                <button onClick={addAfterTail} className={linkedListStyles.addNode} type="button">
+                <button
+                    onClick={addAfterTail}
+                    className={linkedListStyles.addNode}
+                    type="button"
+                    disabled={nodes.length >= 6}
+                >
                     Add First
                 </button>
 
                 { /* Adds a node at the tail */}
-                <button onClick={addAtTail} className={linkedListStyles.addNode} type="button">
+                <button
+                    onClick={addAtTail}
+                    className={linkedListStyles.addNode}
+                    disabled={nodes.length >= 6}
+                    type="button"
+                >
                     Add Last
                 </button>
 
@@ -231,15 +275,6 @@ export default function NodeAdder()         // defines the main component functi
                 )}
             </div>
 
-            <div className={linkedListStyles.extraMethods}>
-                <h3>Structure Information:</h3>
-                <div className={linkedListStyles.methods}>
-                    <p className={linkedListStyles.method}>isEmpty(): {nodes.length > 0 ? "false" : "true"}</p>
-                    <p className={linkedListStyles.method}>size(): {nodes.length}</p>
-                    <p className={linkedListStyles.method}>first(): {nodes.length > 0 ? nodes[0].value : "null"}</p>
-                    <p className={linkedListStyles.method}>last(): {nodes.length > 0 ? nodes[nodes.length - 1].value : "null"}</p>
-                </div>
-            </div>
 
             <div
                 className={styles.nodesContainer}
