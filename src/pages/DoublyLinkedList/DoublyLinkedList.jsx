@@ -1,10 +1,9 @@
 // importing function to make up this page
 import { useState } from 'react';
-import DLLDescription from "./DLLDescription"
 import NodeVisualiser from "./DLLVisualiser";
 import CodeViewer from "./DLLCode";
 import styles from "../CSS/tabs.module.css";
-import CLLDescription from "../CircularlyLinkedList/CLLDescription";
+import DLLDescription from "./DLLDescription";
 
 export default function DoublyLinkedList() {
 
@@ -46,7 +45,7 @@ export default function DoublyLinkedList() {
 
             {/* Conditional Rendering */}
             <div>
-                {activeTab === "description" && <CLLDescription />}
+                {activeTab === "description" && <DLLDescription />}
                 {activeTab === "code" && <CodeViewer />}
                 {activeTab === "visualiser" && <NodeVisualiser />}
             </div>
