@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import linkedListStyles from "../CSS/Structures.module.css"
 import styles from "../CSS/DoublyLinkedList.module.css"
 
-export default function AddNode()
+export default function DLLVisualiser()
 {
     // starting state initialisation
     // creates a state variable array called nodes and its updater setNNodes
@@ -22,6 +22,11 @@ export default function AddNode()
         if (inputValue.trim() === "")
             return;                     // simply return as that is not a valid input
 
+        if (nodes.length >= 4) {
+            alert("Cannot add more than 4 nodes.")
+            return;
+        } // end of if
+
         // ...nodes spreads the existing node
         setNodes([{id: Date.now(), value: inputValue},
             ...nodes]);
@@ -35,6 +40,11 @@ export default function AddNode()
         // if the userInput is empty
         if (inputValue.trim() === "")
             return;                 // simply return as no input is invalid input
+
+        if (nodes.length >= 4) {
+            alert("Cannot add more than 4 nodes.")
+            return;
+        } // end of if
 
         setNodes([...nodes,
             {id: Date.now(), value: inputValue}])
@@ -67,15 +77,26 @@ export default function AddNode()
                 <input
                     type="text"
                     value={inputValue}
+                    maxLength={10}
                     onChange={(e) => setInputValue(e.target.value)}
                     onKeyDown={(e) => e.key === "Enter" && addAtTrailer()}
-                    placeholder="Node Value"
+                    placeholder="Input (max 10 chars)"
                     className={linkedListStyles.inputField}
                 />
-                <button onClick={addAtHeader} className={linkedListStyles.addNode} type="button">
+                <button
+                    onClick={addAtHeader}
+                    className={linkedListStyles.addNode}
+                    type="button"
+                    disabled={nodes.length >= 4}
+                >
                     Add First
                 </button>
-                <button onClick={addAtTrailer} className={linkedListStyles.addNode} type="button">
+                <button
+                    onClick={addAtTrailer}
+                    className={linkedListStyles.addNode}
+                    type="button"
+                    disabled={nodes.length >= 4}
+                >
                     Add Last
                 </button>
                 {nodes.length > 0 && (
@@ -164,4 +185,4 @@ export default function AddNode()
         </div>
     ) // end of return
 
-} // end of AddNode
+} // end of DLLVisualiser
