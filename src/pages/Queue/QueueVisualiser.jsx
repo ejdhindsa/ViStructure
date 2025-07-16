@@ -4,7 +4,7 @@ import structureStyles from '../CSS/Structures.module.css';
 import styles from "../CSS/Queue.module.css";
 import linkedListStyles from "../CSS/Structures.module.css";
 
-export default function AddElement()
+export default function QueueVisualiser()
 {
     // using useState to create elements to be added to the Queue
     const [ elements, setElements ] = useState([]);
@@ -15,6 +15,11 @@ export default function AddElement()
         // return if the inputValue is empty
         if (inputValue === "" )
             return
+
+        if (elements.length >= 8) {
+            alert("Maximum 8 elements allowed!")
+            return;
+        } // end of if
 
         setElements([{id: Date.now(), value: inputValue},
             ...elements]);
@@ -45,15 +50,21 @@ export default function AddElement()
                     value={inputValue}
                     onChange={(e) => setInputValue(e.target.value)}
                     onKeyDown={(e) => e.key === "Enter" && enqueue()}
-                    placeholder="Element Name"
+                    placeholder="Input (max 10 chars)"
+                    maxLength={10}
                     className={structureStyles.inputField}
                 />
-                <button onClick={enqueue} className={structureStyles.addNode} type="button">
-                    Push
+                <button
+                    onClick={enqueue}
+                    className={structureStyles.addNode}
+                    type="button"
+                    disabled={elements.length >= 8}
+                >
+                    Enqueue
                 </button>
                 {elements.length > 0 && (
                     <button onClick={dequeue} className={structureStyles.addNode} type="button">
-                        Pop
+                        Dequeue
                     </button>
                 )}
                 {elements.length > 0 && (
@@ -102,4 +113,4 @@ export default function AddElement()
         </div>
     ); // end of return
 
-} // end of StackVisualiser()
+} // end of QueueVisualiser()
