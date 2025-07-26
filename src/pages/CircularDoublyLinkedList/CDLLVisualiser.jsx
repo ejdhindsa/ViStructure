@@ -111,6 +111,7 @@ export default function NodeAdder()
         // clears the nodes now there are no nodes
         setNodes([]);
         setArrowPath("");
+        setReverseArrowPath("");
     } // end of clearNodes
 
 
