@@ -118,4 +118,4 @@ export default function StackVisualiser()
         </div>
     ) // end of return
 
-} // end of StackVisualiser
+} // end of QueueVisualiser

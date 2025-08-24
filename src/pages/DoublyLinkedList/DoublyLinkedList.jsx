@@ -37,6 +37,7 @@ export default function DoublyLinkedList() {
                 <button
                     onClick={() => setActiveTab("code")}
                     className={styles.tab}
+                    hidden
                 >
                     CODE
                 </button>

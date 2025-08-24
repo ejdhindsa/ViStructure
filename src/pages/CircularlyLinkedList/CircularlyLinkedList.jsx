@@ -36,6 +36,7 @@ export default function CircularlyLinkedList() {
                 <button
                     onClick={() => setActiveTab("code")}
                     className={styles.tab}
+                    hidden
                 >
                     CODE
                 </button>

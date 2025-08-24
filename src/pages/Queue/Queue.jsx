@@ -35,6 +35,7 @@ export default function Queue() {
                 <button
                     onClick={() => setActiveTab("code")}
                     className={styles.tab}
+                    hidden
                 >
                     CODE
                 </button>

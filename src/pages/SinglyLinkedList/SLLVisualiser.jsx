@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import styles from "../CSS/SinglyLinkedList.module.css"
 import linkedListStyles from "../CSS/Structures.module.css"
 
-export default function AddNode()
+export default function SLLVisualiser()
 {
     // starting state initialisation
     // creates a state variable array called nodes and its updater function setNodes
@@ -31,6 +31,11 @@ export default function AddNode()
         // if node is empty
         if (inputValue.trim() === "")
             return;
+
+        if (nodes.length >= 7) {
+            alert("You can't add more than 6 nodes.")
+            return;
+        }
 
         // ...nodes spreads the existing nodes
         // adds new node object with date as id and userInput as value
@@ -257,8 +262,8 @@ return (
 
         </div>
 
-        {/* Traversal Control Section */}
-        <div className={linkedListStyles.traversalControls}>
+        {/*
+        <div className={linkedListStyles.traversalControls} hidden>
             {nodes.length > 0 && !isTraversing && (
                 <button onClick={traverseList} className={linkedListStyles.addNode} type="button">
                     Traverse
@@ -301,6 +306,8 @@ return (
                 </div>
             )}
         </AnimatePresence>
+
+        */}
 
     </div>
 

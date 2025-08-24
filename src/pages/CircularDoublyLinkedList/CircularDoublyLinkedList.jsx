@@ -33,14 +33,13 @@ export default function CircularDoublyLinkedList()
                     VISUALISER
                 </button>
 
-                {/*
                 <button
                     onClick={() => setActiveTab("code")}
                     className={styles.tab}
+                    hidden
                 >
                     CODE
                 </button>
-                */}
 
             </div>
 
