@@ -13,7 +13,7 @@ export default function SLLVisualiser()
     const [inputValue, setInputValue] = useState("");       // for input field
     // states for traversal
     const [currentIndex, setCurrentIndex] = useState(null);
-    const [traversedNodes, setTraversedNodes] = useState([]);
+    // const [traversedNodes, setTraversedNodes] = useState([]);
     const [isTraversing, setIsTraversing] = useState(false);
     // new state for the snapshot of the list
     const [traverseSnapshot, setTraverseSnapshot] = useState([]);
@@ -67,7 +67,7 @@ export default function SLLVisualiser()
     } // end of removeFirst()
 
     // function that starts traversing the list
-    const traverseList = () => {
+    /* const traverseList = () => {
         if (nodes.length === 0)
             return;
 
@@ -77,10 +77,10 @@ export default function SLLVisualiser()
         setIsTraversing(true);
         setIsPaused(false);
 
-    }; // end of traverseList
+    }; // end of traverseList */
 
     // function that allows manually stepping forward
-    const traverseNext = () => {
+    /* const traverseNext = () => {
         if (traversalIndex < traverseSnapshot.length) {
             setTraversedNodes(t => [...t, traverseSnapshot[traversalIndex].value]);
             setCurrentIndex(traversalIndex);
@@ -91,10 +91,10 @@ export default function SLLVisualiser()
             setCurrentIndex(null);
         } // end of else
 
-    }; // end of traverse next
+    }; // end of traverse next */
 
     // function that allows manually stepping backwards
-    const traversePrevious = () => {
+    /* const traversePrevious = () => {
 
         setTraversalIndex(prev => {
             const newIndex = Math.max(prev - 1, 0);
@@ -103,12 +103,12 @@ export default function SLLVisualiser()
             return newIndex;
         });
 
-    }; // end of traversePrevious
+    }; // end of traversePrevious */
 
     // toggles pause or play of the traversal
-    const togglePause = () => {
+    /* const togglePause = () => {
         setIsPaused((prev) => !prev);
-    } // end of toggle pause
+    } // end of toggle pause */
 
     // instead of traversing directly in the traverseList method, list traverses here
     // this safeguards traverse list to from accessing nodes before they have been declared
@@ -131,8 +131,8 @@ export default function SLLVisualiser()
             } // end of if
 
             // Safe access
-            const currentNode = traverseSnapshot[traversalIndex];
-            setTraversedNodes((prev) => [...prev, currentNode.value]);
+            //const currentNode = traverseSnapshot[traversalIndex];
+            // setTraversedNodes((prev) => [...prev, currentNode.value]);
             setCurrentIndex(traversalIndex);
             setTraversalIndex(prev => prev + 1); // Move to next node
 
@@ -144,7 +144,7 @@ export default function SLLVisualiser()
     // clears the nodes and empties the current array of nodes
     const clearNodes = () => {
         setNodes([]);                   // clears the linked list nodes
-        setTraversedNodes([]);          // clears the traversal log
+        // setTraversedNodes([]);          // clears the traversal log
         setTraversalIndex(0);           // resets active index
         setIsTraversing(false);         // stop traversal if in progress
         setTraverseSnapshot([]);        // clear the snapshot as well
