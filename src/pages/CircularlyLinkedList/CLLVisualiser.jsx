@@ -60,8 +60,8 @@ export default function NodeAdder()         // defines the main component functi
         if (inputValue.trim() === "")
             return;
 
-        if (nodes.length >= 6) {
-            alert("You can't add more than 6 nodes.");
+        if (nodes.length >= 8) {
+            alert("You can't add more than 8 nodes.");
             return;
         }
 
@@ -227,7 +227,7 @@ export default function NodeAdder()         // defines the main component functi
                 <input
                     type="text"
                     value={inputValue}
-                    maxLength={10}
+                    maxLength={14}
                     onChange={(e) => setInputValue(e.target.value)}
                     onKeyDown={(e) => e.key === "Enter" && addAtTail()}
                     placeholder="Input (max 10 chars)"
@@ -239,7 +239,7 @@ export default function NodeAdder()         // defines the main component functi
                     onClick={addAfterTail}
                     className={linkedListStyles.addNode}
                     type="button"
-                    disabled={nodes.length >= 6}
+                    disabled={nodes.length >= 8}
                 >
                     Add First
                 </button>
@@ -248,7 +248,7 @@ export default function NodeAdder()         // defines the main component functi
                 <button
                     onClick={addAtTail}
                     className={linkedListStyles.addNode}
-                    disabled={nodes.length >= 6}
+                    disabled={nodes.length >= 8}
                     type="button"
                 >
                     Add Last

@@ -38,6 +38,11 @@ export default function NodeAdder()
         if (inputValue.trim() === "")
             return;                     // simply return as that is not a valid input
 
+        if (nodes.length >= 7) {
+            alert("Maximum 7 elements allowed!")
+            return;
+        } // end of if
+
         // ...nodes spreads the existing node
         setNodes([{id: Date.now(), value: inputValue},
             ...nodes]);
@@ -211,19 +216,48 @@ export default function NodeAdder()
 
     return (
         <div className={linkedListStyles.container}>
+            <div className={linkedListStyles.extraMethods}>
+                <h3>Structure Information:</h3>
+                <div className={linkedListStyles.methods}>
+                    <p className={linkedListStyles.method}>
+                        isEmpty(): {nodes.length > 0 ? "false" : "true"}
+                    </p>
+                    <p className={linkedListStyles.method}>
+                        size(): {nodes.length}
+                    </p>
+                    <p className={linkedListStyles.method}>
+                        first(): {nodes.length > 0 ? nodes[0].value : "null"}
+                    </p>
+                    <p className={linkedListStyles.method}>
+                        last(): {nodes.length > 0 ? nodes[nodes.length - 1].value : "null"}
+                    </p>
+                </div>
+            </div>
+
             <div className={linkedListStyles.controls}>
                 <input
                     type="text"
                     value={inputValue}
                     onChange={(e) => setInputValue(e.target.value)}
                     onKeyDown={(e) => e.key === "Enter" && addAtHeader()}
-                    placeholder="Node Value"
+                    placeholder="Value (Max 4 chars.)"
                     className={linkedListStyles.inputField}
+                    maxLength={4}
                 />
-                <button onClick={addAtHeader} className={linkedListStyles.addNode} type="button">
+                <button
+                    onClick={addAtHeader}
+                    className={linkedListStyles.addNode}
+                    type="button"
+                    disabled={nodes.length >= 7}
+                >
                     Add After Header
                 </button>
-                <button onClick={addAtTrailer} className={linkedListStyles.addNode} type="button">
+                <button
+                    onClick={addAtTrailer}
+                    className={linkedListStyles.addNode}
+                    type="button"
+                    disabled={nodes.length >= 7}
+                >
                     Add Before Trailer
                 </button>
                 { nodes.length > 1 && (
@@ -241,24 +275,6 @@ export default function NodeAdder()
                         Clear
                     </button>
                 )}
-            </div>
-
-            <div className={linkedListStyles.extraMethods}>
-                <h3>Structure Information:</h3>
-                <div className={linkedListStyles.methods}>
-                    <p className={linkedListStyles.method}>
-                        isEmpty(): {nodes.length > 0 ? "false" : "true"}
-                    </p>
-                    <p className={linkedListStyles.method}>
-                        size(): {nodes.length}
-                    </p>
-                    <p className={linkedListStyles.method}>
-                        first(): {nodes.length > 0 ? nodes[0].value : "null"}
-                    </p>
-                    <p className={linkedListStyles.method}>
-                        last(): {nodes.length > 0 ? nodes[nodes.length - 1].value : "null"}
-                    </p>
-                </div>
             </div>
 
             <div

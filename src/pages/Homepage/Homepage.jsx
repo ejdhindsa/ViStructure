@@ -23,7 +23,7 @@ export function Homepage() {
                         how different operations are performed on different data structures.
                     </p>
                 </div>
-                <div className={styles.heroNav}>
+                <div className={styles.heroNav} hidden>
                     <Link
                         to={"https://github.com/ejdhindsa/ViStructure/tree/visual-overhaul"}
                         target={"_blank"}
@@ -32,6 +32,7 @@ export function Homepage() {
                         <img
                             src="/assets/images/components/github-invertocat.png"
                             alt="github"
+                            hidden
                         />
                         <p> GitHub Repository </p>
                     </Link>

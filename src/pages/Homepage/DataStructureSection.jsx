@@ -156,6 +156,21 @@ export default function DataStructuresSection()
                     </Link>
                 </div>
 
+                <div className={styles.tile}>
+                    <Link to="/array" className={styles.link}>
+                        <div className={styles.linkName}>
+                            ARRAY
+                        </div>
+                        <div className={styles.linkDescription}>
+                            An array is a data structure that stores elements in contiguous memory locations
+                            and allows direct access using an index.
+                        </div>
+                    </Link>
+                </div>
+
+            </div>
+
+            <div className={styles.structureTiles}>
                 {/* Conditional render of CDLL */}
                 {isUnlocked && (
                     <div className={styles.tile}>

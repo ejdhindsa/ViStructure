@@ -26,7 +26,7 @@
 
 .headLabel {
     color: #c69c72;
-    margin-left: 0.1rem;
+    margin-right: 0.5rem;
     vertical-align: middle;
     font-size: 1.75rem;
 }
@@ -36,7 +36,6 @@
     color: #c69c72;
     display: inline-block;
     vertical-align: middle;
-    margin-top: -0.75rem;
 }
 
 .tailPointer {
@@ -49,12 +48,11 @@
     color: #c69c72;
     display: inline-block;
     vertical-align: middle;
-    margin-top: -0.75rem;
 }
 
 .tailLabel {
     color: #c69c72;
-    margin-left: 0.1rem;
+    margin-left: 0.5rem;
     vertical-align: middle;
     font-size: 1.75rem;
 }
@@ -110,7 +108,6 @@
 }
 
 .arrow {
-    margin-top: -0.75rem;
     margin-left: -1rem;
     display: inline-block;
     font-size: 3rem;
