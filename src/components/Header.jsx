@@ -53,12 +53,13 @@ export function Header() {
                     </Link>
                 </div>
 
-                <div className={styles.rightAlign}>
-                    <Link to="https://github.com/ejdhindsa/ViStructure">
+                <div className={styles.rightAlign} hidden>
+                    <Link to="https://github.com/ejdhindsa/ViStructure" hidden>
                         <img
                             src="/assets/images/components/github-invertocat.png"
                             alt="github-image"
                             className={styles.githubImage}
+                            hidden
                         />
                     </Link>
                 </div>

@@ -44,6 +44,17 @@ export default function QueueVisualiser()
 
     return (
         <div className={structureStyles.container}>
+            <div className={linkedListStyles.extraMethods}>
+                <h3>Structure Information:</h3>
+                <div className={linkedListStyles.methods}>
+                    <p className={linkedListStyles.method}>isEmpty(): {elements.length > 0 ? "false" : "true"}</p>
+                    <p className={linkedListStyles.method}>size(): {elements.length}</p>
+                    <p className={linkedListStyles.method}>
+                        first(): {elements.length > 0 ? elements[elements.length - 1].value : "null"}
+                    </p>
+                </div>
+            </div>
+
             <div className={structureStyles.controls}>
                 <input
                     type="text"
@@ -72,18 +83,6 @@ export default function QueueVisualiser()
                         Clear
                     </button>
                 )}
-            </div>
-
-            <div className={linkedListStyles.extraMethods}>
-                <h3>Structure Information:</h3>
-                <div className={linkedListStyles.methods}>
-                    <p className={linkedListStyles.method}>isEmpty(): {elements.length > 0 ? "false" : "true"}</p>
-                    <p className={linkedListStyles.method}>size(): {elements.length}</p>
-                    <p className={linkedListStyles.method}>
-                        first(): {elements.length > 0 ? elements[elements.length - 1].value : "null"}
-                    </p>
-                </div>
-
             </div>
 
             <div className={styles.elementContainer}>

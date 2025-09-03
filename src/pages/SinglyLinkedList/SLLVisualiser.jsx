@@ -32,7 +32,7 @@ export default function SLLVisualiser()
         if (inputValue.trim() === "")
             return;
 
-        if (nodes.length >= 7) {
+        if (nodes.length >= 8) {
             alert("You can't add more than 6 nodes.")
             return;
         }
@@ -49,6 +49,11 @@ export default function SLLVisualiser()
         // if node is empty
         if (inputValue.trim() === "")
             return;
+
+        if (nodes.length >= 8) {
+            alert("You can't add more than 6 nodes.")
+            return;
+        }
 
         // ...nodes spreads the existing nodes
         // adds new node object with date as id and userInput as value
@@ -154,33 +159,6 @@ export default function SLLVisualiser()
 
 return (
     <div className={linkedListStyles.container}>
-        <div className={linkedListStyles.controls}>
-            <input
-                type="text"
-                value={inputValue}
-                onChange={(e) => setInputValue(e.target.value)}
-                onKeyDown={(e) => e.key === "Enter" && addLastNode()}
-                placeholder="Node Value"
-                className={linkedListStyles.inputField}
-            />
-            <button onClick={addFirstNode} className={linkedListStyles.addNode} type="button">
-                Add First
-            </button>
-            <button onClick={addLastNode} className={linkedListStyles.addNode} type="button">
-                Add Last
-            </button>
-            {nodes.length > 0 && (
-                <button onClick={removeFirst} className={linkedListStyles.addNode} type="button">
-                    Remove First
-                </button>
-            )}
-            {nodes.length > 0 && (
-                <button onClick={clearNodes} className={linkedListStyles.clearButton} type="button">
-                    Clear Nodes
-                </button>
-            )}
-        </div>
-
         <div className={linkedListStyles.extraMethods}>
             <h3>Structure Information:</h3>
             <div className={linkedListStyles.methods}>
@@ -197,6 +175,44 @@ return (
                     last(): {nodes.length > 0 ? nodes[nodes.length - 1].value : "null"}
                 </p>
             </div>
+        </div>
+
+        <div className={linkedListStyles.controls}>
+            <input
+                type="text"
+                value={inputValue}
+                onChange={(e) => setInputValue(e.target.value)}
+                onKeyDown={(e) => e.key === "Enter" && addLastNode()}
+                placeholder="Node Value (Max 4 chars.)"
+                className={linkedListStyles.inputField}
+                maxLength="4"
+            />
+            <button
+                onClick={addFirstNode}
+                className={linkedListStyles.addNode}
+                type="button"
+                disabled={nodes.length >= 8}
+            >
+                Add First
+            </button>
+            <button
+                onClick={addLastNode}
+                className={linkedListStyles.addNode}
+                type="button"
+                disabled={nodes.length >= 8}
+            >
+                Add Last
+            </button>
+            {nodes.length > 0 && (
+                <button onClick={removeFirst} className={linkedListStyles.addNode} type="button">
+                    Remove First
+                </button>
+            )}
+            {nodes.length > 0 && (
+                <button onClick={clearNodes} className={linkedListStyles.clearButton} type="button">
+                    Clear Nodes
+                </button>
+            )}
         </div>
 
         <div className={styles.nodesContainer}>

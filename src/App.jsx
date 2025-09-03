@@ -12,6 +12,7 @@ import DoublyLinkedList from "./pages/DoublyLinkedList/DoublyLinkedList";
 import CircularDoublyLinkedList from "./pages/CircularDoublyLinkedList/CircularDoublyLinkedList";
 import Stack from "./pages/Stack/Stack"
 import Queue from "./pages/Queue/Queue"
+import Array from "./pages/Array/Array"
 import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
                   <Route path="/circulardoublylinkedlist" element={<CircularDoublyLinkedList />} />
                   <Route path="/stack" element={<Stack />} />
                   <Route path="/queue" element={<Queue />} />
+                  <Route path="/array" element={<Array />} />
               </Routes>
 
           </Router>

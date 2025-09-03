@@ -73,6 +73,24 @@ export default function DLLVisualiser()
 
     return (
         <div className={linkedListStyles.container}>
+            <div className={linkedListStyles.extraMethods}>
+                <h3>Structure Information:</h3>
+                <div className={linkedListStyles.methods}>
+                    <p className={linkedListStyles.method}>
+                        isEmpty(): {nodes.length > 0 ? "false" : "true"}
+                    </p>
+                    <p className={linkedListStyles.method}>
+                        size(): {nodes.length}
+                    </p>
+                    <p className={linkedListStyles.method}>
+                        first(): {nodes.length > 0 ? nodes[0].value : "null"}
+                    </p>
+                    <p className={linkedListStyles.method}>
+                        last(): {nodes.length > 0 ? nodes[nodes.length - 1].value : "null"}
+                    </p>
+                </div>
+            </div>
+
             <div className={linkedListStyles.controls}>
                 <input
                     type="text"
@@ -114,24 +132,6 @@ export default function DLLVisualiser()
                         Clear Nodes
                     </button>
                 )}
-            </div>
-
-            <div className={linkedListStyles.extraMethods}>
-                <h3>Structure Information:</h3>
-                <div className={linkedListStyles.methods}>
-                    <p className={linkedListStyles.method}>
-                        isEmpty(): {nodes.length > 0 ? "false" : "true"}
-                    </p>
-                    <p className={linkedListStyles.method}>
-                        size(): {nodes.length}
-                    </p>
-                    <p className={linkedListStyles.method}>
-                        first(): {nodes.length > 0 ? nodes[0].value : "null"}
-                    </p>
-                    <p className={linkedListStyles.method}>
-                        last(): {nodes.length > 0 ? nodes[nodes.length - 1].value : "null"}
-                    </p>
-                </div>
             </div>
 
             <div className={styles.nodesContainer}>
