@@ -1,21 +1,18 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import structureStyles from '../CSS/Structures.module.css';
-import styles from "../CSS/Queue.module.css"; // you can make Array.module.css later
+import styles from "../CSS/Queue.module.css"; // can make Array.module.css later
 
 export default function ArrayVisualiser() {
-    // array state initialized as empty
     const [array, setArray] = useState([]);
-    // user input for array size
     const [sizeInput, setSizeInput] = useState("");
-    // user input for setting values
     const [valueInput, setValueInput] = useState("");
     const [indexInput, setIndexInput] = useState("");
 
     const createArray = () => {
         const size = parseInt(sizeInput, 10);
-        if (isNaN(size) || size <= 0 || size > 20) {
-            alert("Please enter a valid size (1–20)");
+        if (isNaN(size) || size <= 0 || size > 11) {
+            alert("Please enter a valid size (1–11)");
             return;
         }
         setArray(new Array(size).fill(null));
@@ -24,7 +21,12 @@ export default function ArrayVisualiser() {
 
     const setValueAtIndex = () => {
         const index = parseInt(indexInput, 10);
-        if (isNaN(index) || index < 0 || index >= array.length) {
+        if (isNaN(index)) {
+            // if no index is provided, fall back to add method
+            addValue();
+            return;
+        }
+        if (index < 0 || index >= array.length) {
             alert("Invalid index!");
             return;
         }
@@ -35,6 +37,19 @@ export default function ArrayVisualiser() {
         setValueInput("");
     };
 
+    // 👇 new method: append to end
+    const addValue = () => {
+        const firstEmptyIndex = array.findIndex((el) => el === null);
+        if (firstEmptyIndex === -1) {
+            alert("Array is full! Cannot add more elements.");
+            return;
+        }
+        const newArray = [...array];
+        newArray[firstEmptyIndex] = valueInput;
+        setArray(newArray);
+        setValueInput("");
+    };
+
     const clearArray = () => {
         setArray([]);
     };
@@ -42,13 +57,12 @@ export default function ArrayVisualiser() {
     return (
         <div className={structureStyles.container}>
             <div className={structureStyles.controls}>
-                {/* Step 1: Create array */}
                 <input
                     type="number"
                     value={sizeInput}
                     onChange={(e) => setSizeInput(e.target.value)}
                     onKeyDown={(e) => e.key === "Enter" && createArray()}
-                    placeholder="Array Size"
+                    placeholder="Array Size (Max 10)"
                     className={structureStyles.inputField}
                 />
                 <button onClick={createArray} className={structureStyles.addNode} type="button">
@@ -61,14 +75,13 @@ export default function ArrayVisualiser() {
                 )}
             </div>
 
-            {/* Step 2: Set values */}
             {array.length > 0 && (
                 <div className={structureStyles.controls}>
                     <input
                         type="number"
                         value={indexInput}
                         onChange={(e) => setIndexInput(e.target.value)}
-                        placeholder="Index"
+                        placeholder="Index (optional)"
                         className={structureStyles.inputField}
                     />
                     <input
@@ -76,17 +89,16 @@ export default function ArrayVisualiser() {
                         value={valueInput}
                         onChange={(e) => setValueInput(e.target.value)}
                         onKeyDown={(e) => e.key === "Enter" && setValueAtIndex()}
-                        placeholder="Value"
-                        maxLength={10}
+                        placeholder="Input (Max 7 chars.)"
+                        maxLength={7}
                         className={structureStyles.inputField}
                     />
                     <button onClick={setValueAtIndex} className={structureStyles.addNode} type="button">
-                        Set
+                        Set / Add
                     </button>
                 </div>
             )}
 
-            {/* Structure Information */}
             <div className={structureStyles.extraMethods}>
                 <h3>Structure Information:</h3>
                 <div className={structureStyles.methods}>
@@ -97,7 +109,6 @@ export default function ArrayVisualiser() {
                 </div>
             </div>
 
-            {/* Array Display */}
             <div className={styles.elementContainer}>
                 <AnimatePresence>
                     {array.map((value, index) => (
@@ -107,11 +118,11 @@ export default function ArrayVisualiser() {
                             initial={{ opacity: 0, y: -15, scale: 0.9 }}
                             animate={{ opacity: 1, y: 0, scale: 1 }}
                             exit={{ opacity: 0, y: 100, scale: 0.8 }}
-                            transition={{ duration: 0.2 }}
+                            transition={{ duration: 0.5 }}
                         >
                             <div className={styles.element}>
-                                <p>[{index}]</p>
-                                <p>{value !== null ? value : "-"}</p>
+                                <p>[{index}] &nbsp;</p>
+                                <p>{value !== null ? [value + " "] : "-"}</p>
                             </div>
                         </motion.div>
                     ))}
