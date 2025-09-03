@@ -1,11 +1,15 @@
 // importing function to make up this page
-import { useState } from 'react';
+import {useEffect, useState} from 'react';
 import NodeVisualiser from "./DLLVisualiser";
 import CodeViewer from "./DLLCode";
 import styles from "../CSS/tabs.module.css";
 import DLLDescription from "./DLLDescription";
 
 export default function DoublyLinkedList() {
+
+    useEffect(() => {
+        document.title = "DLL - ViStructures";
+    }, []);
 
     const [activeTab, setActiveTab] = useState("description");
 

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import NodeVisualiser from "./StackVisualiser";
 import StackDescription from "./StackDescription";
 import CodeViewer from "./StackCode";
@@ -6,6 +6,11 @@ import styles from "../CSS/tabs.module.css"
 
 export default function Stack()
 {
+
+    useEffect(() => {
+        document.title = "Stack - ViStructures";
+    }, []);
+
     const [activeTab, setActiveTab] = useState("description");
 
     return (

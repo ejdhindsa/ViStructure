@@ -1,10 +1,14 @@
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import NodeVisualiser from "./CLLVisualiser";
 import CLLDescription from "./CLLDescription"
 import CodeViewer from "./CLLCode";
 import styles from "../CSS/tabs.module.css"
 
 export default function CircularlyLinkedList() {
+
+    useEffect(() => {
+        document.title = "CLL - ViStructures";
+    }, []);
 
     const [activeTab, setActiveTab] = useState("description");
 

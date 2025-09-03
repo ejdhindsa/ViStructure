@@ -1,10 +1,15 @@
-import { useState } from "react"
+import {useEffect, useState} from "react"
 import QueueDescription from "./QueueDescription"
 import NodeVisualiser from "./QueueVisualiser"
 import CodeViewer from "./QueueCode"
 import styles from "../CSS/tabs.module.css"
 
 export default function Queue() {
+
+    useEffect(() => {
+        document.title = "Queue - ViStructures";
+    }, []);
+
     const [activeTab, setActiveTab] = useState("description");
 
     return (

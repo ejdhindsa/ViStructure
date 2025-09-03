@@ -1,9 +1,13 @@
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import NodeVisualiser from './SLLVisualiser'
 import SLLDescription from './SLLDescription'
 import styles from "../CSS/tabs.module.css"
 
 export default function SinglyLinkedList() {
+
+    useEffect(() => {
+        document.title = "SLL - ViStructures";
+    }, []);
 
     const [activeTab, setActiveTab] = useState("description");
 

@@ -1,8 +1,14 @@
 import styles from '../CSS/homepage.module.css'
 import LinkedLists from "./DataStructureSection"
 import {Link} from "react-router-dom";
+import {useEffect} from "react";
 
 export function Homepage() {
+
+    useEffect(() => {
+        document.title = "Homepage - ViStructures";
+    }, []);
+
     return (
 
         <div className={styles.homepage}>

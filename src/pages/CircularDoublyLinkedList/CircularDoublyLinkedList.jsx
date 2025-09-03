@@ -1,10 +1,14 @@
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import NodeVisualiser from "./CDLLVisualiser";
 import CDLLDescription from "./CDLLDescription";
 import styles from "../CSS/tabs.module.css"
 
 export default function CircularDoublyLinkedList()
 {
+    useEffect(() => {
+        document.title = "CDLL - ViStructures";
+    }, []);
+
     const [activeTab, setActiveTab] = useState("description");
 
     return (
