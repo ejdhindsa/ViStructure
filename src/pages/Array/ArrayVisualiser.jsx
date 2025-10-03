@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import structureStyles from '../CSS/Structures.module.css';
-import styles from "../CSS/Queue.module.css"; // can make Array.module.css later
+import styles from "../CSS/Queue.module.css";
 
 export default function ArrayVisualiser() {
     const [array, setArray] = useState([]);

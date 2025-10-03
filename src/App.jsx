@@ -13,6 +13,7 @@ import CircularDoublyLinkedList from "./pages/CircularDoublyLinkedList/CircularD
 import Stack from "./pages/Stack/Stack"
 import Queue from "./pages/Queue/Queue"
 import Array from "./pages/Array/Array"
+import PositionalList from "./pages/PositionalList/PositionalList";
 import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
                   <Route path="/stack" element={<Stack />} />
                   <Route path="/queue" element={<Queue />} />
                   <Route path="/array" element={<Array />} />
+                  <Route path="/positionallist" element={<PositionalList />} />
               </Routes>
 
           </Router>

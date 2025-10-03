@@ -171,6 +171,18 @@ export default function DataStructuresSection()
             </div>
 
             <div className={styles.structureTiles}>
+                <div className={styles.tile}>
+                    <Link to="/positionallist" className={styles.link}>
+                        <div className={styles.linkName}>
+                            POSITIONAL LIST
+                        </div>
+                        <div className={styles.linkDescription}>
+                            A positional list is a data structure that stores elements in linked nodes and allows
+                            access through positions rather than indices.
+                        </div>
+                    </Link>
+                </div>
+
                 {/* Conditional render of CDLL */}
                 {isUnlocked && (
                     <div className={styles.tile}>

@@ -1,0 +1,74 @@
+/* PositionalList.module.css */
+.elementContainer {
+    margin: 5rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    min-height: 10vh;
+}
+
+.elements {
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    margin-bottom: 1rem;
+    min-width: 15rem;
+    min-height: 8rem;
+}
+
+.elements:hover {
+    color: #c69c72;
+}
+
+/* Flip card CSS */
+.flipCard {
+    width: 100%;
+    height: 100%;
+}
+
+.flipCardInner {
+    position: relative;
+    width: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease;
+    backface-visibility: hidden;
+}
+
+
+/* Wrapper for Framer Motion */
+.elementsWrapper {
+    display: flex;
+}
+
+.flipCardFront,
+.flipCardBack {
+    position: absolute;
+    width: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 8rem;
+    padding: 1rem;
+    border: 1px solid #a3a3a3;
+}
+
+.flipCardFront {
+    font-size: 1.4rem;
+    color: #c69c72;
+}
+
+.addressLabel {
+    font-weight: bold;
+}
+
+.flipCardBack {
+    transform: rotateY(180deg);
+    flex-direction: column;
+    color: #fff;
+    font-size: 1.5rem;
+}
+
+.backLine {
+    margin: 0.2rem 0;
+}
