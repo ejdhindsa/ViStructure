@@ -1,1 +1,1 @@
-export const CURRENT_PASSWORD = "TarikTorgadden";
+export const CURRENT_PASSWORD = "ACS-2947";

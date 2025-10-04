@@ -5,11 +5,11 @@ import structureStyles from '../CSS/Structures.module.css';
 import positionalStyles from "../CSS/PositionalList.module.css"
 
 const nextAddress = (n) => {
-    let s = "";
+    let s = "0x1";
     n += 1;
     while (n > 0) {
         const rem = (n - 1) % 26;
-        s = String.fromCharCode(65 + rem) + s;
+        s += String.fromCharCode(65 + rem);
         n = Math.floor((n - 1) / 26);
     }
     return s;
@@ -43,7 +43,11 @@ function PositionalBlock({ element }) {
                         </div>
                         <div className={positionalStyles.flipCardBack}>
                             <p className={positionalStyles.backLine}><b></b> {element.value}</p>
-                            <p className={positionalStyles.backLine}>Index: {element.insertionIndex}</p>
+                            <p className={positionalStyles.backLine}>
+                                <span className={positionalStyles.backLineAddress}>
+                                    Address: {element.address}
+                                </span>
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -59,6 +63,7 @@ export default function PositionalListVisualiser() {
 
     const [nextAddrCount, setNextAddrCount] = useState(0);
     const [nextInsertionIndex, setNextInsertionIndex] = useState(0);
+    const [beforeAfterResult, setBeforeAfterResult] = useState("");
 
     const findIndexByAddress = (addr) => list.findIndex((e) => e.address === addr);
 
@@ -107,7 +112,7 @@ export default function PositionalListVisualiser() {
 
     const addBefore = () => {
         if (!valueInput.trim()) return;
-        const ref = targetAddressInput.trim().toUpperCase();
+        const ref = targetAddressInput.trim();
         if (!ref) { alert("Please supply a target address."); return; }
         const idx = findIndexByAddress(ref);
         if (idx === -1) { alert(`Address ${ref} not found`); return; }
@@ -173,19 +178,69 @@ export default function PositionalListVisualiser() {
                 {list.length > 0 && <button onClick={clearList} className={structureStyles.clearButton}>Clear</button>}
             </div>
 
+            <div style={{ marginTop: "2rem" }}>
+                <input
+                    type="text"
+                    placeholder="Address"
+                    value={targetAddressInput}
+                    onChange={(e) => setTargetAddressInput(e.target.value)}
+                    className={structureStyles.inputField}
+                />
+
+                <button
+                    onClick={() => {
+                        const ref = targetAddressInput.trim();
+                        const index = findIndexByAddress(ref);
+                        if (index > 0) {
+                            const beforeEl = list[index - 1];
+                            setBeforeAfterResult(beforeEl.address);
+                        } else {
+                            setBeforeAfterResult("null");
+                        }
+                    }}
+                    className={structureStyles.addNode}
+                    style={{ marginLeft: "1rem" }}
+                >
+                    before()
+                </button>
+
+                <button
+                    onClick={() => {
+                        const ref = targetAddressInput.trim();
+                        const index = findIndexByAddress(ref);
+                        if (index !== -1 && index < list.length - 1) {
+                            const afterEl = list[index + 1];
+                            setBeforeAfterResult(afterEl.address);
+                        } else {
+                            setBeforeAfterResult("null");
+                        }
+                    }}
+                    className={structureStyles.addNode}
+                    style={{ marginLeft: "0.5rem" }}
+                >
+                    after()
+                </button>
+
+                <p style={{ marginTop: "4rem", fontSize: "1.5rem", marginBottom: "2rem", color:"#c69c72"}}>
+                    Result: {beforeAfterResult}
+                </p>
+            </div>
+
+
             <div className={structureStyles.extraMethods}>
                 <h3>Structure Information:</h3>
                 <div className={structureStyles.methods}>
                     <p className={structureStyles.method}>size(): {size()}</p>
                     <p className={structureStyles.method}>isEmpty(): {isEmpty() ? "true" : "false"}</p>
                     <p className={structureStyles.method}>
-                        first(): {first() ? `${first().address} / ${first().value} (index ${first().insertionIndex})` : "null"}
+                        first(): {first() ? `${first().address}` : "null"}
                     </p>
                     <p className={structureStyles.method}>
-                        last(): {last() ? `${last().address} / ${last().value} (index ${last().insertionIndex})` : "null"}
+                        last(): {last() ? `${last().address}` : "null"}
                     </p>
                 </div>
             </div>
+
             <div className={positionalStyles.elementContainer}>
                 <AnimatePresence>
                     {list.map(el => <PositionalBlock key={el.address} element={el} />)}
