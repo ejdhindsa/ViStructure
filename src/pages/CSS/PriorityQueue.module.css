@@ -1,0 +1,45 @@
+.queueHeader {
+    color: #d4d4d4;
+    font-size: 2rem;
+    padding: 0 0 3rem 0;
+}
+
+.queueDescription {
+    color: #eaeaea;
+    font-size: 1.2rem;
+    padding: 0 5rem 3rem 5rem;
+    text-align: center;
+}
+
+.queue {
+    padding: 2rem 1rem;
+}
+
+.nodes {
+    padding: 2rem 3rem;
+    min-width: 500px;
+}
+
+.node {
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 15px 5px 0;
+    margin-left: -2px;
+    text-align: center;
+    border: #c69c72 2px solid;
+    color: #eaeaea;
+    min-width: 125px;
+    font-size: 1.4rem;
+}
+
+.key {
+    color: #c69c72;
+    border-right: #c69c72 2px dashed;
+    padding: 0 15px;
+    margin: 0 0;
+}
+
+.value {
+    flex: 1;
+    text-align: center;
+}

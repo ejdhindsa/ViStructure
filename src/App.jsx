@@ -14,6 +14,8 @@ import Stack from "./pages/Stack/Stack"
 import Queue from "./pages/Queue/Queue"
 import Array from "./pages/Array/Array"
 import PositionalList from "./pages/PositionalList/PositionalList";
+import Tree from "./pages/Tree/Tree"
+import PriorityQueue from "./pages/PriorityQueue/PriorityQueue";
 import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
@@ -34,6 +36,8 @@ function App() {
                   <Route path="/queue" element={<Queue />} />
                   <Route path="/array" element={<Array />} />
                   <Route path="/positionallist" element={<PositionalList />} />
+                  <Route path="/tree" element={<Tree />} />
+                  <Route path="/priorityqueue" element={<PriorityQueue />} />
               </Routes>
 
           </Router>

@@ -183,6 +183,32 @@ export default function DataStructuresSection()
                     </Link>
                 </div>
 
+                <div className={styles.tile}>
+                    <Link to="/tree" className={styles.link}>
+                        <div className={styles.linkName}>
+                            TREE
+                        </div>
+                        <div className={styles.linkDescription}>
+                            A tree is a hierarchical data structure that organizes nodes in a parent-child relationship,
+                            starting from a single root node and branching outward without forming cycles.
+                        </div>
+                    </Link>
+                </div>
+            </div>
+
+            <div className={styles.structureTiles}>
+                <div className={styles.tile}>
+                    <Link to="/priorityqueue" className={styles.link}>
+                        <div className={styles.linkName}>
+                            PRIORITY QUEUE
+                        </div>
+                        <div className={styles.linkDescription}>
+                            A data structure where elements are served based on priority level rather than their
+                            insertion order.
+                        </div>
+                    </Link>
+                </div>
+
                 {/* Conditional render of CDLL */}
                 {isUnlocked && (
                     <div className={styles.tile}>
