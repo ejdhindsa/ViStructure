@@ -1,0 +1,86 @@
+.treeCanvas {
+    position: relative;
+    width: 100%;
+    min-height: 600px;
+    margin-top: 5rem;
+}
+
+.treeNode {
+    position: absolute;
+    min-width: 60px;
+    height: 50px;
+    border: 2px solid #c69c72;
+    color: #eaeaea;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    font-weight: 650;
+    cursor: pointer;
+    transition: all 0.35s ease;
+}
+
+/* Hover = node focus */
+.treeNode:hover {
+    transform: scale(1.08);
+    border-color: #c69c72;
+}
+
+.rootNode {
+    border-color: #c69c72;
+    color: #fff;
+}
+
+.internalNode {
+    border-color: #c69c72;
+    color: #fff;
+}
+
+.leafNode {
+    border-color: #c69c72;
+    color: #fff;
+}
+
+.edge {
+    stroke: #919191;
+    stroke-width: 2px;
+    opacity: 0.85;
+    transition: stroke 0.3s ease;
+}
+
+.edgeHighlight {
+    stroke: #c69c72;
+    stroke-width: 2px;
+    opacity: 1;
+}
+
+.edgeLayer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.selectedNode {
+    border-color: #7c5834;
+    background-color: #222;
+    z-index: 10;
+    transform: scale(1.15);
+}
+
+.traversalHead {
+    font-size: 1.3rem;
+    color: #c69c72;
+    font-weight: 550;
+}
+
+.traversedNodes {
+    font-size: 1.2rem;
+    color: #eaeaea;
+    padding: 0 0;
+    margin: 0 -2px;
+}
+
+
