@@ -6,10 +6,11 @@ export const PASSWORDS = {
     QUEUE: "arch",
     CIRCULAR: "endeavor",
     CDLL: "fedora",
+    TREE: "dorn",
     POSITIONAL: "manjaro",
 };
 
-export const UNLOCK_ORDER = ["ARRAY", "SINGLY", "DOUBLY", "STACK", "QUEUE", "CIRCULAR", "CDLL", "POSITIONAL"];
+export const UNLOCK_ORDER = ["ARRAY", "SINGLY", "DOUBLY", "STACK", "QUEUE", "CIRCULAR", "CDLL", "TREE", "POSITIONAL"];
 
 export const STRUCTURE_INFO = {
     ARRAY: {
@@ -46,6 +47,11 @@ export const STRUCTURE_INFO = {
         name: "CIRCULAR DOUBLY LINKED LIST",
         path: "/circulardoublylinkedlist",
         desc: "A circular doubly linked list has nodes linked in both directions, with the last node pointing to the first and vice versa, forming a loop."
+    },
+    TREE: {
+        name: "TREE",
+        path: "/tree",
+        desc: "A tree arranges nodes hierarchically, branching from a root to children without forming loops.",
     },
     POSITIONAL: {
         name: "POSITIONAL LIST",
