@@ -1,6 +1,5 @@
 import styles from '../CSS/homepage.module.css'
 import LinkedLists from "./DataStructureSection"
-import {Link} from "react-router-dom";
 import {useEffect} from "react";
 
 export function Homepage() {
@@ -29,19 +28,19 @@ export function Homepage() {
                         how different operations are performed on different data structures.
                     </p>
                 </div>
-                <div className={styles.heroNav} hidden>
-                    <Link
-                        to={"https://github.com/ejdhindsa/ViStructure/tree/visual-overhaul"}
-                        target={"_blank"}
+                <div className={styles.heroNav}>
+                    <a
+                        href="https://github.com/ejdhindsa/ViStructure"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className={styles.linkButton}
                     >
                         <img
                             src="/assets/images/components/github-invertocat.png"
                             alt="github"
-                            hidden
                         />
                         <p> GitHub Repository </p>
-                    </Link>
+                    </a>
 
                 </div>
             </div>

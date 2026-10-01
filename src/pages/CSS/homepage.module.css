@@ -106,55 +106,6 @@
     margin-bottom: 5rem;
 }
 
-.passwordForm {
-    display: flex;
-    justify-content: center;
-    gap: 2.5rem;
-}
-
-.passwordInput {
-    transition: 0.5s ease-in-out;
-    padding: 1.2rem;
-    font-size: 1.2rem;
-    border-radius: 5px;
-    outline: none;
-    background-color: transparent;
-    border-bottom: 1px solid #c69c72;
-    border-top: none;
-    border-right: none;
-    border-left: none;
-    color: white;
-    width: 25rem;
-}
-
-.passwordInput:hover {
-    transition: 0.5s ease-in-out;
-    background-color: rgba(16, 16, 16, 0.7);
-}
-
-.passwordInput:focus {
-    transition: 0.5s ease-in-out;
-    background-color: rgba(27, 27, 27, 0.7);
-}
-
-.passwordButton {
-    transition: 0.5s ease-in-out;
-    padding: 0.8rem 2rem;
-    font-size: 1.1rem;
-    font-weight: bold;
-    border-radius: 5px;
-    background-color: transparent;
-    color: #d4d4d4;
-    border: 2px solid #d4d4d4;
-    cursor: pointer;
-}
-
-.passwordButton:hover {
-    transition: 0.5s ease-in-out;
-    color: #c69c72;
-    border: 2px solid #c69c72;;
-}
-
 
 .successMessage {
     text-align: center;
