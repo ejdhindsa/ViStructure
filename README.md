@@ -1,66 +1,60 @@
 # ViStructure
 
-![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
-![Status](https://img.shields.io/badge/status-active-brightgreen)
-![Made with React](https://img.shields.io/badge/Made%20with-React-61DAFB?logo=react&logoColor=white)
+[![Licence: GPL-3.0](https://img.shields.io/badge/Licence-GPL--3.0-blue.svg)](LICENSE)
+![React](https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=black)
 
-🔗 **Live Site:** [https://www.vistructures.com/](https://www.vistructures.com/)
+Interactive web application for visualising fundamental data structures, built with React and Framer Motion.
 
-**ViStructure** is an interactive web application that visualizes fundamental data structures using **React**. It’s designed to help students and beginners understand how data structures operate in real-time through smooth, animated visualizations.
+Used as a visual learning aid for ACS-2947 (Data Structures and Algorithms) at the University of Winnipeg.
 
-## 🚀 Features
+Live demo: [vistructures.com](https://www.vistructures.com/)
 
-- 🎥 Smooth animations using **Framer Motion**
-- 🔁 Real-time node manipulation (add, remove, traverse)
-- 🔍 Step-by-step illustration of how data flows and changes
-- 📱 Fully responsive and user-friendly UI
-- 🧠 Visualization of multiple data structures
+<!-- Screenshot placeholder: owner to supply image -->
 
-## 💻 Run Locally
+## Features
 
-The live version of ViStructure is available at [**vistructures.com**](https://www.vistructures.com/). It's recommended to use the website for the most up-to-date experience.
+- Interactive node operations: insertion, deletion, and traversal
+- Step-by-step state animations with Framer Motion
+- Side-by-side code views on supported structures
+- Responsive layout across screen sizes
 
-However, if you'd like to run the application locally:
+## Run Locally
 
-Clone the project:
+Requirements: Node.js (v18+) and npm.
 
 ```bash
-git clone https://github.com/ejdhindsa/ViStructure
-```
-
-Navigate to the project directory:
-
-```bash
+# Clone the repository
+git clone https://github.com/ejdhindsa/ViStructure.git
 cd ViStructure
+
+# Install dependencies
+npm ci
+
+# Start the dev server
+npm start
 ```
 
-Install dependencies:
+The app will be available at `http://localhost:3000`.
 
-```bash
-npm install
-```
+## Roadmap
 
-Start the development server:
+Implemented data structures:
+- Array (visualiser)
+- Singly Linked List (visualiser)
+- Doubly Linked List (visualiser + code view)
+- Circularly Linked List (visualiser + code view)
+- Circular Doubly Linked List (visualiser + code view)
+- Stack (visualiser + code view)
+- Queue (visualiser + code view)
+- Positional List (visualiser)
+- Tree (visualiser + code view)
 
-```bash
-npm run start
-```
+Upcoming:
+- Priority Queue (in progress on the `PriorityQueue` branch)
+- Code view toggle for remaining structures (Array, Singly Linked List, Positional List)
+- Algorithm visualisations
+- Dark / light mode toggle
 
-The app should automatically open in your default browser. If it doesn’t, visit `http://localhost:3000` manually.
+## Licence
 
-## 🛣️ Roadmap
-
-- Add more data structures in the following order:
-    - Queues
-    - Arrays and ArrayLists
-    - Positional Lists
-    - Trees
-    - Priority Queues
-
-- Add visualizations for algorithms
-- Implement a Code View toggle (to see code alongside the visualization)
-- Add a Dark/Light mode toggle
-
-## 📄 License
-
-ViStructure is available under the **MIT License**. See the [LICENSE](https://choosealicense.com/licenses/mit/) for more details.
+This project is licensed under the terms of the [GNU General Public License v3.0](LICENSE).

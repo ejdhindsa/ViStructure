@@ -1,16 +1,5 @@
-export const PASSWORDS = {
-    ARRAY: "kali",
-    SINGLY: "ubuntu",
-    DOUBLY: "mint",
-    STACK: "debian",
-    QUEUE: "arch",
-    CIRCULAR: "endeavor",
-    CDLL: "fedora",
-    TREE: "dorn",
-    POSITIONAL: "manjaro",
-};
+export const STRUCTURE_ORDER = ["ARRAY", "SINGLY", "DOUBLY", "STACK", "QUEUE", "CIRCULAR", "CDLL", "TREE", "POSITIONAL"];
 
-export const UNLOCK_ORDER = ["ARRAY", "SINGLY", "DOUBLY", "STACK", "QUEUE", "CIRCULAR", "CDLL", "TREE", "POSITIONAL"];
 
 export const STRUCTURE_INFO = {
     ARRAY: {
